@@ -708,7 +708,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73f810a10cf5ee1448b86769fa5cb8e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PopulationManager
-  timeToNextDebug: 0
+  timeToNextDebug: 5
   tickController: {fileID: 0}
   currentPopulation: 0
 --- !u!4 &1817173130

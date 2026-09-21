@@ -9,6 +9,12 @@ public class ConsumerBuilding : MonoBehaviour, ITickable
     int maxPopulation;
     [SerializeField]
     PopulationManager populationManager;
+    [SerializeField]
+    TickController tickController;
+
+    [SerializeField]
+    float timeToNextPopGrouth;
+    float currentTime;
 
     // setter for later buffs/calc of what pupulation it should be
     public int CurrentPopulation { get => currentPopulation; set => currentPopulation = value; }
@@ -19,6 +25,15 @@ public class ConsumerBuilding : MonoBehaviour, ITickable
     // gedanken zumachen wie man es am dümmsten anstellen kann
     public void GameTick(float deltaTime)
     {
+        if(currentTime >= timeToNextPopGrouth)
+        {
+            GrowPopulation();
+            currentTime = 0;
+        }
+        else
+        {
+            currentTime += deltaTime;
+        }
     }
 
     void OnEnable()
@@ -28,11 +43,25 @@ public class ConsumerBuilding : MonoBehaviour, ITickable
             populationManager = PopulationManager.Instance;
         }
         populationManager.RegisterConsumerBuilding(this);
-        currentPopulation = maxPopulation; // für jetzt test
+        if(tickController == null)
+        {
+            tickController = TickController.Instance;
+        }
+        tickController.Register(this);
     }
 
     void OnDisable()
     {
         populationManager.UnregisterConsumerBuilding(this);
+        tickController.Unregister(this);
+    }
+
+    //if later population can gropw more then 1 per methode call (diffrent consumtions/ als groth idk yet)
+    void GrowPopulation()
+    {
+        if (currentPopulation < maxPopulation)
+        {
+            currentPopulation++;
+        }
     }
 }

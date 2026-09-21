@@ -51,13 +51,23 @@ public class PopulationManager : MonoBehaviour, ITickable
         }
     }
 
-    private void ShowDebugPopulation()
+    void ShowDebugPopulation()
     {
         CalcPopulation();
-        Debug.Log("Current Population: " + currentPopulation);
+        Debug.Log("Current Population: " + currentPopulation + " / " + CalcMaxPopulation());
     }
 
-    private void CalcPopulation()
+    int CalcMaxPopulation()
+    {
+        int maxPopulation = 0;
+        foreach (ConsumerBuilding building in consumerBuildings)
+        {
+            maxPopulation += building.MaxPopulation;
+        }
+        return maxPopulation;
+    }
+
+    void CalcPopulation()
     {
         currentPopulation = 0;
         foreach (ConsumerBuilding building in consumerBuildings)
