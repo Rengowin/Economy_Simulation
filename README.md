@@ -43,7 +43,11 @@ every 5s 1 woodcutter produces 1 wood
 
 ### from 21.09
 
-population groth every 2s for every home that still can
+population growth every 2s for every home that still can
 <img width="1442" height="361" alt="showcaseOfPopGrow" src="https://github.com/user-attachments/assets/7a48c1cc-696f-4bdb-ba20-0532ebf290b8" />
+
+right now the populationgrowth is just looking for if 1 population have 1 wood without reducing it next step will be to say somethink like per 100 population you use x ressources (later with more and induviale ressources give they own values maybe :D)
+<img width="1422" height="620" alt="PopulationGroth" src="https://github.com/user-attachments/assets/bbf38082-3594-4462-a7dd-c0ae3dd10d97" />
+
 
 
