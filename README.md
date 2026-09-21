@@ -1,8 +1,9 @@
 # Economy Simulation
 
 A small Unity/C# project inspired by economy and production systems from games
-such as Anno. The project currently focuses on implementing and
-learning the underlying gameplay systems (before working on visuals maybe will work with assces later or make somethink simple later but im not sure).
+such as Anno. The project currently focuses on implementing and learning the
+underlying gameplay and simulation systems before working on visuals. Visuals
+may be added later using simple assets or custom models.
 
 ## Core Features
 
@@ -23,20 +24,51 @@ learning the underlying gameplay systems (before working on visuals maybe will w
 - **Input System:** Unity's Input System is used for test controls and
   spawning buildings during development.
 
-- **Population System (Early Development):** Basic residential/consumer
-  buildings and population tracking are currently being implemented.
+- **Population System:** Residential buildings track their current and maximum
+  population. Population grows over time, with the growth speed currently
+  influenced by the availability of a test resource.
 
 ## Current Development State
 
 The project currently focuses on gameplay logic and system architecture.
+Production, resource storage, building costs and basic population growth are
+implemented and connected.
+
+The population system currently uses Wood as a placeholder need to test
+resource-dependent population growth. Actual resource consumption and a more
+flexible needs system are planned as the next steps.
+
 Visuals are intentionally kept as simple placeholder cubes while the core
 simulation systems are developed.
 
 ## Pictures
 
-### from 18.09
+### 18.09
 
-<img width="1611" height="897" alt="first production cycle of 5 woodcutters" src="https://github.com/user-attachments/assets/0d1b5957-5a93-4fc8-aef8-2a98b0e0c60a" />
+Each Woodcutter produces 1 Wood every 5 seconds.
 
-<img width="1602" height="901" alt="can Only spawn 1 sawmill since to little wood" src="https://github.com/user-attachments/assets/77864bd2-b461-4cdf-af38-76a13829f856" />
+<img width="1611" height="897" alt="First production cycle of 5 Woodcutters" src="https://github.com/user-attachments/assets/0d1b5957-5a93-4fc8-aef8-2a98b0e0c60a" />
 
+A Sawmill costs 5 Wood. This test attempts to build multiple Sawmills while
+only having enough resources to build one. A Sawmill consumes 2 Wood and
+produces 1 Plank every 5 seconds.
+
+<img width="1602" height="901" alt="Only one Sawmill can be spawned because there is not enough Wood" src="https://github.com/user-attachments/assets/77864bd2-b461-4cdf-af38-76a13829f856" />
+
+### 21.09
+
+Basic population growth test. Each residential building gains 1 population
+every 2 seconds until reaching its maximum population.
+
+<img width="1442" height="361" alt="Basic population growth test" src="https://github.com/user-attachments/assets/7a48c1cc-696f-4bdb-ba20-0532ebf290b8" />
+
+First resource-dependent population growth test. For now, 1 Wood per current
+population is treated as 100% resource availability. Resources are not consumed
+yet. If less Wood is available, the population growth rate is reduced
+proportionally.
+
+The next step is to implement actual resource consumption, for example a
+certain amount of a resource per 100 population over a defined time period.
+Different needs can later have their own consumption rates.
+
+<img width="1422" height="620" alt="Resource-dependent population growth test" src="https://github.com/user-attachments/assets/bbf38082-3594-4462-a7dd-c0ae3dd10d97" />
