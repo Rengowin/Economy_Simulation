@@ -15,7 +15,20 @@ public class PopulationManager : MonoBehaviour, ITickable
     [SerializeField]
     int currentPopulation;
 
+    [SerializeField, Range(0, 1)]
+    float growthRate;
+
+    //später zum scriptableObject machen jetzt enum nur wegen testen
+    [SerializeField]
+    RessourceEnum ressouceToEat;
+
+    [SerializeField]
+    StorageManager storageManager;
+
     List<ConsumerBuilding> consumerBuildings = new List<ConsumerBuilding>();
+
+
+    public float GrowthRatePercentage { get => growthRate; }
 
     void Awake()
     {
@@ -36,6 +49,10 @@ public class PopulationManager : MonoBehaviour, ITickable
             tickController = TickController.Instance;
         }
         tickController.Register(this);
+        if(storageManager == null)
+        {
+            storageManager = StorageManager.Instance;
+        }
     }
 
     public void GameTick(float deltaTime)
@@ -49,12 +66,18 @@ public class PopulationManager : MonoBehaviour, ITickable
         {
             currentTime += deltaTime;
         }
+        CalcPopulation();
+        CalcWhatsNeeded();
     }
 
     void ShowDebugPopulation()
     {
-        CalcPopulation();
         Debug.Log("Current Population: " + currentPopulation + " / " + CalcMaxPopulation());
+        Debug.Log(
+            "Population: " + currentPopulation +
+            " | Wood: " + storageManager.GlobalStorage.GetAmount(ressouceToEat) +
+            " | Growth Rate: " + growthRate * 100 + "%"
+        );
     }
 
     int CalcMaxPopulation()
@@ -75,6 +98,24 @@ public class PopulationManager : MonoBehaviour, ITickable
             currentPopulation += building.CurrentPopulation;
         }
     }
+
+    // right now just the one ressource later for every ressources that maybe needed (but will also look for the individaul resources)
+    void CalcWhatsNeeded()
+    {
+        float neededAmount = currentPopulation;
+        float currentAmount = storageManager.GlobalStorage.GetAmount(ressouceToEat);
+        //checken für nan/null also wenn durch 0 geteilt wird oder so
+        if (neededAmount == 0)
+        {
+            growthRate = 1;
+        }
+        else
+        {
+            growthRate = Mathf.Clamp01(currentAmount / neededAmount);
+        }
+
+    }
+
 
     public void RegisterConsumerBuilding(ConsumerBuilding building)
     {

@@ -25,14 +25,19 @@ public class ConsumerBuilding : MonoBehaviour, ITickable
     // gedanken zumachen wie man es am dümmsten anstellen kann
     public void GameTick(float deltaTime)
     {
-        if(currentTime >= timeToNextPopGrouth)
+
+        if(populationManager.GrowthRatePercentage <= 0f)
+        {
+            return;
+        }
+        if (currentTime >= timeToNextPopGrouth / populationManager.GrowthRatePercentage)
         {
             GrowPopulation();
-            currentTime = 0;
+            currentTime -= timeToNextPopGrouth;
         }
         else
         {
-            currentTime += deltaTime;
+        currentTime += deltaTime;
         }
     }
 
