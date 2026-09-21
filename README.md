@@ -31,3 +31,12 @@ learning the underlying gameplay systems (before working on visuals maybe will w
 The project currently focuses on gameplay logic and system architecture.
 Visuals are intentionally kept as simple placeholder cubes while the core
 simulation systems are developed.
+
+## Pictures
+
+### from 18.09
+
+<img width="1611" height="897" alt="first production cycle of 5 woodcutters" src="https://github.com/user-attachments/assets/0d1b5957-5a93-4fc8-aef8-2a98b0e0c60a" />
+
+<img width="1602" height="901" alt="can Only spawn 1 sawmill since to little wood" src="https://github.com/user-attachments/assets/77864bd2-b461-4cdf-af38-76a13829f856" />
+
