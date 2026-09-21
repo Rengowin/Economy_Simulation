@@ -1120,6 +1120,16 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""initialStateCheck"": false,
                     ""priority"": 0
+                },
+                {
+                    ""name"": ""SpawnHut"",
+                    ""type"": ""Button"",
+                    ""id"": ""b8375423-9acf-439a-8630-118aa12bec5d"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false,
+                    ""priority"": 0
                 }
             ],
             ""bindings"": [
@@ -1142,6 +1152,17 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
                     ""action"": ""SpawnWoodCutter"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6ca222b5-3448-4e1c-9538-810ddbdfaedf"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SpawnHut"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1238,6 +1259,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_BuildModus = asset.FindActionMap("BuildModus", throwIfNotFound: true);
         m_BuildModus_SpawnSawMill = m_BuildModus.FindAction("SpawnSawMill", throwIfNotFound: true);
         m_BuildModus_SpawnWoodCutter = m_BuildModus.FindAction("SpawnWoodCutter", throwIfNotFound: true);
+        m_BuildModus_SpawnHut = m_BuildModus.FindAction("SpawnHut", throwIfNotFound: true);
     }
 
     ~@InputSystem_Actions()
@@ -1701,6 +1723,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     private List<IBuildModusActions> m_BuildModusActionsCallbackInterfaces = new List<IBuildModusActions>();
     private readonly InputAction m_BuildModus_SpawnSawMill;
     private readonly InputAction m_BuildModus_SpawnWoodCutter;
+    private readonly InputAction m_BuildModus_SpawnHut;
     /// <summary>
     /// Provides access to input actions defined in input action map "BuildModus".
     /// </summary>
@@ -1720,6 +1743,10 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "BuildModus/SpawnWoodCutter".
         /// </summary>
         public InputAction @SpawnWoodCutter => m_Wrapper.m_BuildModus_SpawnWoodCutter;
+        /// <summary>
+        /// Provides access to the underlying input action "BuildModus/SpawnHut".
+        /// </summary>
+        public InputAction @SpawnHut => m_Wrapper.m_BuildModus_SpawnHut;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -1752,6 +1779,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @SpawnWoodCutter.started += instance.OnSpawnWoodCutter;
             @SpawnWoodCutter.performed += instance.OnSpawnWoodCutter;
             @SpawnWoodCutter.canceled += instance.OnSpawnWoodCutter;
+            @SpawnHut.started += instance.OnSpawnHut;
+            @SpawnHut.performed += instance.OnSpawnHut;
+            @SpawnHut.canceled += instance.OnSpawnHut;
         }
 
         /// <summary>
@@ -1769,6 +1799,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @SpawnWoodCutter.started -= instance.OnSpawnWoodCutter;
             @SpawnWoodCutter.performed -= instance.OnSpawnWoodCutter;
             @SpawnWoodCutter.canceled -= instance.OnSpawnWoodCutter;
+            @SpawnHut.started -= instance.OnSpawnHut;
+            @SpawnHut.performed -= instance.OnSpawnHut;
+            @SpawnHut.canceled -= instance.OnSpawnHut;
         }
 
         /// <summary>
@@ -2037,5 +2070,12 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnSpawnWoodCutter(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "SpawnHut" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnSpawnHut(InputAction.CallbackContext context);
     }
 }

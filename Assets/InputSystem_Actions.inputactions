@@ -1034,6 +1034,16 @@
                     "interactions": "",
                     "initialStateCheck": false,
                     "priority": 0
+                },
+                {
+                    "name": "SpawnHut",
+                    "type": "Button",
+                    "id": "b8375423-9acf-439a-8630-118aa12bec5d",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false,
+                    "priority": 0
                 }
             ],
             "bindings": [
@@ -1056,6 +1066,17 @@
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
                     "action": "SpawnWoodCutter",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6ca222b5-3448-4e1c-9538-810ddbdfaedf",
+                    "path": "<Keyboard>/3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SpawnHut",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

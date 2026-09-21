@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b97b887bf90872e41aa694da8a540f9f, type: 3}
+  m_Name: Hut
+  m_EditorClassIdentifier: Assembly-CSharp::BuildingData
+  buildingPrefab: {fileID: 2020611811090214880, guid: 003795780b710fa478629c8b274a808f, type: 3}
+  buildCost: {fileID: 11400000, guid: 5e6a154fd92695043810c09ef839e0c0, type: 2}

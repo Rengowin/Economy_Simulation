@@ -17,6 +17,9 @@ public class BuildingManager : MonoBehaviour
     [SerializeField]
     BuildingData sawMillData;
 
+    [SerializeField]
+    BuildingData hutData;
+
 
     public void SpawnTestSawMill(Vector3 pos)
     {
@@ -26,6 +29,11 @@ public class BuildingManager : MonoBehaviour
     public void SpawnTestWoodCutter(Vector3 pos)
     {
         BuildBuilding(woodCutterData, pos);
+    }
+
+    public void SpawnTestHut(Vector3 pos)
+    {
+        BuildBuilding(hutData, pos);
     }
 
     private void Awake()

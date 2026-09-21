@@ -14,6 +14,7 @@ public class InputController : MonoBehaviour
 
         inputActions.BuildModus.SpawnWoodCutter.performed += ctx => SpawnWoodCutter();
         inputActions.BuildModus.SpawnSawMill.performed += ctx => SpawnSawMill();
+        inputActions.BuildModus.SpawnHut.performed += ctx => SpawnHut();
     }
 
     void Start()
@@ -46,5 +47,10 @@ public class InputController : MonoBehaviour
     void SpawnSawMill()
     {
         buildingManager.SpawnTestSawMill(new Vector3(5, 0, 0));
+    }
+
+    void SpawnHut()
+    {
+        buildingManager.SpawnTestHut(new Vector3(10, 0, 0));
     }
 }
