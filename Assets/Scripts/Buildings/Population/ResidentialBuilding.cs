@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ConsumerBuilding : MonoBehaviour, ITickable
+public class ResidentialBuilding : MonoBehaviour, ITickable
 {
     // mmm int oder float? wegen / später bzw short wegen daten sparen mmm idk
     [SerializeField]

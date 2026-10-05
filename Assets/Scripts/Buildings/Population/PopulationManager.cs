@@ -25,7 +25,7 @@ public class PopulationManager : MonoBehaviour, ITickable
     [SerializeField]
     StorageManager storageManager;
 
-    List<ConsumerBuilding> consumerBuildings = new List<ConsumerBuilding>();
+    List<ResidentialBuilding> consumerBuildings = new List<ResidentialBuilding>();
 
 
     public float GrowthRatePercentage { get => growthRate; }
@@ -83,7 +83,7 @@ public class PopulationManager : MonoBehaviour, ITickable
     int CalcMaxPopulation()
     {
         int maxPopulation = 0;
-        foreach (ConsumerBuilding building in consumerBuildings)
+        foreach (ResidentialBuilding building in consumerBuildings)
         {
             maxPopulation += building.MaxPopulation;
         }
@@ -93,7 +93,7 @@ public class PopulationManager : MonoBehaviour, ITickable
     void CalcPopulation()
     {
         currentPopulation = 0;
-        foreach (ConsumerBuilding building in consumerBuildings)
+        foreach (ResidentialBuilding building in consumerBuildings)
         {
             currentPopulation += building.CurrentPopulation;
         }
@@ -117,7 +117,7 @@ public class PopulationManager : MonoBehaviour, ITickable
     }
 
 
-    public void RegisterConsumerBuilding(ConsumerBuilding building)
+    public void RegisterConsumerBuilding(ResidentialBuilding building)
     {
         if (!consumerBuildings.Contains(building))
         {
@@ -125,7 +125,7 @@ public class PopulationManager : MonoBehaviour, ITickable
         }
     }
 
-    public void UnregisterConsumerBuilding(ConsumerBuilding building)
+    public void UnregisterConsumerBuilding(ResidentialBuilding building)
     {
         if (consumerBuildings.Contains(building))
         {

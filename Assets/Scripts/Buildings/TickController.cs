@@ -25,7 +25,7 @@ public class TickController : MonoBehaviour
     }
     void Update()
     {
-        sendUpdate(Time.deltaTime);
+        SendUpdate(Time.deltaTime);
     }
 
     public void Register(ITickable tickable)
@@ -38,7 +38,7 @@ public class TickController : MonoBehaviour
         stuffThatsNeedUpdates.Remove(tickable);
     }
 
-    void sendUpdate(float deltaTime)
+    void SendUpdate(float deltaTime)
     {
         foreach (ITickable tickable in stuffThatsNeedUpdates)
         {
