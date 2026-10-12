@@ -30,7 +30,10 @@ public class TickController : MonoBehaviour
 
     public void Register(ITickable tickable)
     {
-        stuffThatsNeedUpdates.Add(tickable);
+        if(!stuffThatsNeedUpdates.Contains(tickable))
+        {
+            stuffThatsNeedUpdates.Add(tickable);
+        }
     }
 
     public void Unregister(ITickable tickable)

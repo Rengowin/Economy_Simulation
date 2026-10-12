@@ -13,22 +13,18 @@ public class NeedState
      * float fulfillment;
     */
 
-    /*
-     * enum of the population type or ScriptableObjects
-     * [SerializeField]
-     * populationTier or populationType;
-     * because idk where i will end with this project
-     */
-
-    [SerializeField]
-    int populationNeededToUnlock;
-
     [SerializeField]
     bool unlocked;
-
-    public int PopulationNeededToUnlock { get => populationNeededToUnlock; }
     public bool Unlocked { get => unlocked; set => unlocked = value; }
 
     public NeedResourceData NeedResourceData { get => needResourceData; }
     public float AccumulatedNeed { get => accumulatedNeed; set => accumulatedNeed = value; }
+
+
+    public NeedState(NeedResourceData needResourceData)
+    {
+        this.needResourceData = needResourceData;
+        this.unlocked = false;
+        this.accumulatedNeed = 0f;
+    }
 }

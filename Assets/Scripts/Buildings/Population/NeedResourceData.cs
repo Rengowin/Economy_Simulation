@@ -13,6 +13,17 @@ public class NeedResourceData
     [SerializeField]
     int perPopulation;
 
+    /*
+     * enum of the population type or ScriptableObjects
+     * [SerializeField]
+     * populationTier or populationType;
+     * because idk where i will end with this project
+     */
+
+    [SerializeField]
+    int populationNeededToUnlock;
+    public int PopulationNeededToUnlock { get => populationNeededToUnlock; }
+
     public RessourceEnum Ressource { get => ressource; }
     public float AmountPerMinute { get => amountPerMinute; }
     public int PerPopulation { get => perPopulation; }

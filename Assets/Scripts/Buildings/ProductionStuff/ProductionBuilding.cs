@@ -1,5 +1,6 @@
 using System.Data;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class ProductionBuilding : MonoBehaviour, ITickable
 {
@@ -31,13 +32,26 @@ public class ProductionBuilding : MonoBehaviour, ITickable
     [SerializeField]
     TickController tickController;
 
+    void OnEnable()
+    {
+        if (tickController == null)
+        {
+            tickController = TickController.Instance;
+        }
+        tickController.Register(this);
+    }
+    void OnDisable()
+    {
+        tickController.Unregister(this);
+    }
+
     void Start()
     {
         if(tickController == null)
         {
             tickController = TickController.Instance;
+            tickController.Register(this);
         }
-        tickController.Register(this);
         timeNeedToProduce = recipe.ProductionTime;
         if(globalStorage == null)
         {

@@ -6,4 +6,6 @@ public class PopulationNeed : ScriptableObject
 {
     [SerializeField]
     List<NeedResourceData> needResources;
+
+    public List<NeedResourceData> NeedResources { get => needResources; }
 }

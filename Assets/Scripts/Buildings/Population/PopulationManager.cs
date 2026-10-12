@@ -30,6 +30,8 @@ public class PopulationManager : MonoBehaviour, ITickable
 
     public float GrowthRatePercentage { get => growthRate; }
 
+    public int CurrentPopulation { get => currentPopulation; }
+
     void Awake()
     {
         if (Instance == null)
