@@ -72,3 +72,10 @@ certain amount of a resource per 100 population over a defined time period.
 Different needs can later have their own consumption rates.
 
 <img width="1422" height="620" alt="Resource-dependent population growth test" src="https://github.com/user-attachments/assets/bbf38082-3594-4462-a7dd-c0ae3dd10d97" />
+
+### 12.10
+
+why long break? I have right now also an extra homework that took like 30 hours woork while also universty startet
+
+<img width="1550" height="332" alt="populationEatsNowStuff" src="https://github.com/user-attachments/assets/273b9f25-dc19-4799-aebd-8c6b5fd49133" />
+
