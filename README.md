@@ -28,15 +28,16 @@ may be added later using simple assets or custom models.
   population. Population grows over time, with the growth speed currently
   influenced by the availability of a test resource.
 
+- **Population Needs:** Population needs are defined using ScriptableObjects, allowing different resources to have configurable consumption rates and population requirements for unlocking. The PopulationNeedsController tracks individual needs and consumes resources from storage over time.
+  
 ## Current Development State
 
 The project currently focuses on gameplay logic and system architecture.
 Production, resource storage, building costs and basic population growth are
 implemented and connected.
+The project currently includes production, resource storage, building construction, basic population growth, and an initial population needs system.
 
-The population system currently uses Wood as a placeholder need to test
-resource-dependent population growth. Actual resource consumption and a more
-flexible needs system are planned as the next steps.
+Population needs can now be unlocked based on population size and consume resources over time. Wood is currently used as the first test resource. Population growth still uses the previous resource-availability calculation and has not yet been integrated with the new needs system.
 
 Visuals are intentionally kept as simple placeholder cubes while the core
 simulation systems are developed.
@@ -72,3 +73,14 @@ certain amount of a resource per 100 population over a defined time period.
 Different needs can later have their own consumption rates.
 
 <img width="1422" height="620" alt="Resource-dependent population growth test" src="https://github.com/user-attachments/assets/bbf38082-3594-4462-a7dd-c0ae3dd10d97" />
+
+### 12.10
+
+Implemented the first version of the population needs system. Needs are defined through ScriptableObjects and can be unlocked based on population size.
+
+Each need tracks its resource consumption over time, including fractional amounts. Once enough consumption has accumulated, whole resource units are removed from storage.
+
+The first test uses 100 population consuming 1 Wood per minute. The next step is to connect the needs system to population growth and handle insufficient resources.
+
+<img width="1550" height="332" alt="populationEatsNowStuff" src="https://github.com/user-attachments/assets/273b9f25-dc19-4799-aebd-8c6b5fd49133" />
+
