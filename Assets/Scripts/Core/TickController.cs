@@ -2,6 +2,7 @@ using NUnit.Framework;
 using UnityEngine;
 using System.Collections.Generic;
 
+//execution order und auf -10 setzen
 public class TickController : MonoBehaviour
 {
     //Instance

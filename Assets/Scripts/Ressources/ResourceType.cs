@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public enum RessourceEnum
+public enum ResourceType
 {
     Wood,
     Planks,

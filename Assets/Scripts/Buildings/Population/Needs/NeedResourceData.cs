@@ -4,14 +4,14 @@ using UnityEngine;
 public class NeedResourceData
 {
     [SerializeField]
-    RessourceEnum ressource;
+    ResourceType resource;
 
     [SerializeField]
     float amountPerMinute = 1.0f;
 
     //guess needs a better name but idk one just yet
     [SerializeField]
-    int perPopulation;
+    int populationPerUnit;
 
     /*
      * enum of the population type or ScriptableObjects
@@ -21,10 +21,10 @@ public class NeedResourceData
      */
 
     [SerializeField]
-    int populationNeededToUnlock;
-    public int PopulationNeededToUnlock { get => populationNeededToUnlock; }
+    int requiredPopulationToUnlock;
+    public int RequiredPopulationToUnlock { get => requiredPopulationToUnlock; }
 
-    public RessourceEnum Ressource { get => ressource; }
+    public ResourceType Ressource { get => resource; }
     public float AmountPerMinute { get => amountPerMinute; }
-    public int PerPopulation { get => perPopulation; }
+    public int PopulationPerUnit { get => populationPerUnit; }
 }

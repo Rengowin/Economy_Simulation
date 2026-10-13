@@ -14,7 +14,7 @@ public class ProductionBuilding : MonoBehaviour, ITickable
 
     [Header("TimeReference")]
     [SerializeField]
-    float timeNeedToProduce;
+    float productionDuration;
     [SerializeField]
     float currentProductionTime;
 
@@ -52,7 +52,7 @@ public class ProductionBuilding : MonoBehaviour, ITickable
             tickController = TickController.Instance;
             tickController.Register(this);
         }
-        timeNeedToProduce = recipe.ProductionTime;
+        productionDuration = recipe.ProductionTime;
         if(globalStorage == null)
         {
             globalStorage = StorageManager.Instance;
@@ -65,20 +65,20 @@ public class ProductionBuilding : MonoBehaviour, ITickable
         {
             currentProductionTime += deltaTime;
             //check if work is done
-            if(currentProductionTime >= timeNeedToProduce)
+            if(currentProductionTime >= productionDuration)
             {
                 foreach(ResourceAmount resource in recipe.Output)
                 {
                     globalStorage.GlobalStorage.Add(resource.Ressource, resource.Amount);
                 }
                 //check if a new workflow can start
-                if (canProduce())
+                if (CanProduce())
                 {
                     foreach (ResourceAmount resource in recipe.Input)
                     {
                         globalStorage.GlobalStorage.Remove(resource.Ressource, resource.Amount);
                     }
-                    currentProductionTime-=timeNeedToProduce;
+                    currentProductionTime-=productionDuration;
                 }
                 else
                 {
@@ -88,7 +88,7 @@ public class ProductionBuilding : MonoBehaviour, ITickable
             }
 
         }
-        else if (canProduce())
+        else if (CanProduce())
         {
             isWorking = true;
             foreach(ResourceAmount resource in recipe.Input)
@@ -98,7 +98,7 @@ public class ProductionBuilding : MonoBehaviour, ITickable
         }
     }
 
-    bool canProduce()
+    bool CanProduce()
     {
         foreach(ResourceAmount resource in recipe.Input)
         {

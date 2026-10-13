@@ -2,9 +2,9 @@ using UnityEngine;
 
 public interface IStorage
 {
-    void Add(RessourceEnum ressource, int amount);
-    bool Remove(RessourceEnum ressource, int amount);
-    bool Has(RessourceEnum ressource, int amount);
-    int GetAmount(RessourceEnum ressource);
+    void Add(ResourceType ressource, int amount);
+    bool Remove(ResourceType ressource, int amount);
+    bool Has(ResourceType ressource, int amount);
+    int GetAmount(ResourceType ressource);
 
 }

@@ -3,9 +3,9 @@ using UnityEngine;
 
 public class Storage: IStorage
 {
-    Dictionary<RessourceEnum, int> resources = new();
+    Dictionary<ResourceType, int> resources = new();
 
-    public void Add(RessourceEnum ressource, int amount)
+    public void Add(ResourceType ressource, int amount)
     {
         if (resources.ContainsKey(ressource))
         {
@@ -17,7 +17,7 @@ public class Storage: IStorage
         }
     }
 
-    public bool Remove(RessourceEnum ressource, int amount)
+    public bool Remove(ResourceType ressource, int amount)
     {
         if (resources.ContainsKey(ressource) && resources[ressource] >= amount)
         {
@@ -27,12 +27,12 @@ public class Storage: IStorage
         return false;
     }
 
-    public bool Has(RessourceEnum ressource, int amount)
+    public bool Has(ResourceType ressource, int amount)
     {
         return resources.ContainsKey(ressource) && resources[ressource] >= amount;
     }
 
-    public int GetAmount(RessourceEnum ressource)
+    public int GetAmount(ResourceType ressource)
     {
         if (resources.ContainsKey(ressource))
         {

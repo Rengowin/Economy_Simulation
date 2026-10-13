@@ -6,7 +6,7 @@ public class PopulationManager : MonoBehaviour, ITickable
     public static PopulationManager Instance { get; private set; }
 
     [SerializeField]
-    float timeToNextDebug;
+    float debugInterval;
     float currentTime;
 
     [SerializeField]
@@ -20,12 +20,12 @@ public class PopulationManager : MonoBehaviour, ITickable
 
     //später zum scriptableObject machen jetzt enum nur wegen testen
     [SerializeField]
-    RessourceEnum ressouceToEat;
+    ResourceType growthResource;
 
     [SerializeField]
     StorageManager storageManager;
 
-    List<ResidentialBuilding> consumerBuildings = new List<ResidentialBuilding>();
+    List<ResidentialBuilding> residentialBuildings = new List<ResidentialBuilding>();
 
 
     public float GrowthRatePercentage { get => growthRate; }
@@ -59,7 +59,7 @@ public class PopulationManager : MonoBehaviour, ITickable
 
     public void GameTick(float deltaTime)
     {
-        if (currentTime >= timeToNextDebug)
+        if (currentTime >= debugInterval)
         {
             ShowDebugPopulation();
             currentTime = 0;
@@ -68,44 +68,44 @@ public class PopulationManager : MonoBehaviour, ITickable
         {
             currentTime += deltaTime;
         }
-        CalcPopulation();
-        CalcWhatsNeeded();
+        CalculatePopulation();
+        CalculateGrowthRate();
     }
 
     void ShowDebugPopulation()
     {
-        Debug.Log("Current Population: " + currentPopulation + " / " + CalcMaxPopulation());
+        Debug.Log("Current Population: " + currentPopulation + " / " + CalculateMaxPopulation());
         Debug.Log(
             "Population: " + currentPopulation +
-            " | Wood: " + storageManager.GlobalStorage.GetAmount(ressouceToEat) +
+            " | Wood: " + storageManager.GlobalStorage.GetAmount(growthResource) +
             " | Growth Rate: " + growthRate * 100 + "%"
         );
     }
 
-    int CalcMaxPopulation()
+    int CalculateMaxPopulation()
     {
         int maxPopulation = 0;
-        foreach (ResidentialBuilding building in consumerBuildings)
+        foreach (ResidentialBuilding building in residentialBuildings)
         {
             maxPopulation += building.MaxPopulation;
         }
         return maxPopulation;
     }
 
-    void CalcPopulation()
+    void CalculatePopulation()
     {
         currentPopulation = 0;
-        foreach (ResidentialBuilding building in consumerBuildings)
+        foreach (ResidentialBuilding building in residentialBuildings)
         {
             currentPopulation += building.CurrentPopulation;
         }
     }
 
     // right now just the one ressource later for every ressources that maybe needed (but will also look for the individaul resources)
-    void CalcWhatsNeeded()
+    void CalculateGrowthRate()
     {
         float neededAmount = currentPopulation;
-        float currentAmount = storageManager.GlobalStorage.GetAmount(ressouceToEat);
+        float currentAmount = storageManager.GlobalStorage.GetAmount(growthResource);
         //checken für nan/null also wenn durch 0 geteilt wird oder so
         if (neededAmount == 0)
         {
@@ -119,19 +119,19 @@ public class PopulationManager : MonoBehaviour, ITickable
     }
 
 
-    public void RegisterConsumerBuilding(ResidentialBuilding building)
+    public void RegisterResidentialBuilding(ResidentialBuilding building)
     {
-        if (!consumerBuildings.Contains(building))
+        if (!residentialBuildings.Contains(building))
         {
-            consumerBuildings.Add(building);
+            residentialBuildings.Add(building);
         }
     }
 
-    public void UnregisterConsumerBuilding(ResidentialBuilding building)
+    public void UnregisterResidentialBuilding(ResidentialBuilding building)
     {
-        if (consumerBuildings.Contains(building))
+        if (residentialBuildings.Contains(building))
         {
-            consumerBuildings.Remove(building);
+            residentialBuildings.Remove(building);
         }
     }
 }

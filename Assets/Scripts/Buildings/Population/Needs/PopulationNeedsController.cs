@@ -11,7 +11,7 @@ public class PopulationNeedsController : MonoBehaviour, ITickable
     StorageManager storageManager;
 
     [SerializeField]
-    int UpdateInterval = 5;
+    int updateInterval = 5;
     float currentTime;
 
 
@@ -40,7 +40,6 @@ public class PopulationNeedsController : MonoBehaviour, ITickable
         if (tickController == null)
         {
             tickController = TickController.Instance;
-            tickController.Register(this);
         }
         if (populationManager == null)
         {
@@ -50,15 +49,16 @@ public class PopulationNeedsController : MonoBehaviour, ITickable
         {
             storageManager = StorageManager.Instance;
         }
-        CreateNeedStates();
+        tickController.Register(this);
+        InitializeNeedStates();
     }
 
     public void GameTick(float deltaTime)
     {
         currentTime += deltaTime;
-        if (currentTime >= UpdateInterval)
+        if (currentTime >= updateInterval)
         {
-            currentTime -= UpdateInterval;
+            currentTime -= updateInterval;
             UpdateUnlocks();
             UpdateNeeds();
             UpdateDebug();
@@ -69,7 +69,7 @@ public class PopulationNeedsController : MonoBehaviour, ITickable
     {
         foreach(NeedState needs in needStates)
         {
-            if (!needs.Unlocked && populationManager.CurrentPopulation >= needs.NeedResourceData.PopulationNeededToUnlock)
+            if (!needs.Unlocked && populationManager.CurrentPopulation >= needs.NeedResourceData.RequiredPopulationToUnlock)
             {
                 needs.Unlocked = true;
             }
@@ -81,7 +81,7 @@ public class PopulationNeedsController : MonoBehaviour, ITickable
         {
             if (needs.Unlocked)
             {
-                needs.AccumulatedNeed += ClalcNeedForRessource(needs.NeedResourceData);
+                needs.AccumulatedNeed += CalculateResourceConsumption(needs.NeedResourceData);
                 if (needs.AccumulatedNeed >= 1)
                 {
                     int amountToTake = Mathf.FloorToInt(needs.AccumulatedNeed);
@@ -113,15 +113,15 @@ public class PopulationNeedsController : MonoBehaviour, ITickable
 
 
 
-    float ClalcNeedForRessource(NeedResourceData resource) {
+    float CalculateResourceConsumption(NeedResourceData resource) {
         // here needs later be a check for diffrent populations tiers wish that TODO: works like in vs code with the addon TODO Tree oder so xD, oh wait no i dont need the check -.-
         float amount = resource.AmountPerMinute
-                     * (populationManager.CurrentPopulation / (float)resource.PerPopulation)
-                     * (UpdateInterval / 60f); return amount;
+                     * (populationManager.CurrentPopulation / (float)resource.PopulationPerUnit)
+                     * (updateInterval / 60f); return amount;
     }
 
     //mmm wenn tier 1 und tier 2 beide holz brauchen mache 2 unterschiedliche needstates? also weil die einen eventull doppelt soviel holz pro 100 einwohner brauchen? also unterschiedliche wertigkeit des bedurfniss
-    void CreateNeedStates()
+    void InitializeNeedStates()
     {
         foreach (PopulationNeed tierNeed in populationNeeds)
         { 

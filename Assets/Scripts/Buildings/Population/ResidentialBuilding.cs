@@ -13,7 +13,7 @@ public class ResidentialBuilding : MonoBehaviour, ITickable
     TickController tickController;
 
     [SerializeField]
-    float timeToNextPopGrouth;
+    float timeBetweenPopulationGrowth;
     float currentTime;
 
     // setter for later buffs/calc of what pupulation it should be
@@ -35,10 +35,10 @@ public class ResidentialBuilding : MonoBehaviour, ITickable
         {
             return;
         }
-        if (currentTime >= timeToNextPopGrouth / populationManager.GrowthRatePercentage)
+        if (currentTime >= timeBetweenPopulationGrowth / populationManager.GrowthRatePercentage)
         {
             GrowPopulation();
-            currentTime -= timeToNextPopGrouth;
+            currentTime -= timeBetweenPopulationGrowth;
         }
         else
         {
@@ -52,7 +52,7 @@ public class ResidentialBuilding : MonoBehaviour, ITickable
         {
             populationManager = PopulationManager.Instance;
         }
-        populationManager.RegisterConsumerBuilding(this);
+        populationManager.RegisterResidentialBuilding(this);
         if(tickController == null)
         {
             tickController = TickController.Instance;
@@ -62,7 +62,7 @@ public class ResidentialBuilding : MonoBehaviour, ITickable
 
     void OnDisable()
     {
-        populationManager.UnregisterConsumerBuilding(this);
+        populationManager.UnregisterResidentialBuilding(this);
         tickController.Unregister(this);
     }
 
