@@ -45,21 +45,40 @@ public class InputController : MonoBehaviour
 
     void SpawnWoodCutter()
     {
-        buildingManager.SpawnTestWoodCutter(new Vector3(0, 0, 0));
+        buildingManager.SpawnTestWoodCutter(GetMouseWorldPosition());
     }
 
     void SpawnSawMill()
     {
-        buildingManager.SpawnTestSawMill(new Vector3(5, 0, 0));
+        buildingManager.SpawnTestSawMill(GetMouseWorldPosition());
     }
 
     void SpawnHut()
     {
-        buildingManager.SpawnTestHut(new Vector3(10, 0, 0));
+        buildingManager.SpawnTestHut(GetMouseWorldPosition());
     }
 
     void GiveWood()
     {
         StorageManager.Instance.GlobalStorage.Add(ResourceType.Wood, debugRessource);
+    }
+
+
+    Vector3 GetMouseWorldPosition()
+    {
+        Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
+        Vector2 mousePosition = Mouse.current.position.ReadValue();
+        Ray ray = Camera.main.ScreenPointToRay(mousePosition);
+
+        if (groundPlane.Raycast(ray, out float distance))
+        {
+            Vector3 worldPosition = ray.GetPoint(distance);
+            return new Vector3(worldPosition.x, 0, worldPosition.z);
+        }
+        else
+        {
+            Debug.LogError("Mouse ray did not hit the ground plane.");
+            return Vector3.zero;
+        }
     }
 }
