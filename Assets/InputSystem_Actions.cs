@@ -176,7 +176,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""name"": ""Sprint"",
                     ""type"": ""Button"",
                     ""id"": ""641cd816-40e6-41b4-8c3d-04687c349290"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false,
@@ -1130,6 +1130,16 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""initialStateCheck"": false,
                     ""priority"": 0
+                },
+                {
+                    ""name"": ""GiveWood"",
+                    ""type"": ""Button"",
+                    ""id"": ""a7985839-22ba-4a91-a2c4-4572fbf198c9"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false,
+                    ""priority"": 0
                 }
             ],
             ""bindings"": [
@@ -1163,6 +1173,28 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""SpawnHut"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fa127cb8-4a77-4a71-a3d5-3b9723f7dfd2"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""GiveWood"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9f99b618-64f7-486d-97af-b59f78ef9614"",
+                    ""path"": ""<Keyboard>/h"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""GiveWood"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1260,6 +1292,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_BuildModus_SpawnSawMill = m_BuildModus.FindAction("SpawnSawMill", throwIfNotFound: true);
         m_BuildModus_SpawnWoodCutter = m_BuildModus.FindAction("SpawnWoodCutter", throwIfNotFound: true);
         m_BuildModus_SpawnHut = m_BuildModus.FindAction("SpawnHut", throwIfNotFound: true);
+        m_BuildModus_GiveWood = m_BuildModus.FindAction("GiveWood", throwIfNotFound: true);
     }
 
     ~@InputSystem_Actions()
@@ -1724,6 +1757,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     private readonly InputAction m_BuildModus_SpawnSawMill;
     private readonly InputAction m_BuildModus_SpawnWoodCutter;
     private readonly InputAction m_BuildModus_SpawnHut;
+    private readonly InputAction m_BuildModus_GiveWood;
     /// <summary>
     /// Provides access to input actions defined in input action map "BuildModus".
     /// </summary>
@@ -1747,6 +1781,10 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "BuildModus/SpawnHut".
         /// </summary>
         public InputAction @SpawnHut => m_Wrapper.m_BuildModus_SpawnHut;
+        /// <summary>
+        /// Provides access to the underlying input action "BuildModus/GiveWood".
+        /// </summary>
+        public InputAction @GiveWood => m_Wrapper.m_BuildModus_GiveWood;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -1782,6 +1820,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @SpawnHut.started += instance.OnSpawnHut;
             @SpawnHut.performed += instance.OnSpawnHut;
             @SpawnHut.canceled += instance.OnSpawnHut;
+            @GiveWood.started += instance.OnGiveWood;
+            @GiveWood.performed += instance.OnGiveWood;
+            @GiveWood.canceled += instance.OnGiveWood;
         }
 
         /// <summary>
@@ -1802,6 +1843,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @SpawnHut.started -= instance.OnSpawnHut;
             @SpawnHut.performed -= instance.OnSpawnHut;
             @SpawnHut.canceled -= instance.OnSpawnHut;
+            @GiveWood.started -= instance.OnGiveWood;
+            @GiveWood.performed -= instance.OnGiveWood;
+            @GiveWood.canceled -= instance.OnGiveWood;
         }
 
         /// <summary>
@@ -2077,5 +2121,12 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnSpawnHut(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "GiveWood" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnGiveWood(InputAction.CallbackContext context);
     }
 }

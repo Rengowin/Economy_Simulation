@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Tier1Population
   m_EditorClassIdentifier: Assembly-CSharp::PopulationNeed
   needResources:
-  - ressource: 0
+  - resource: 0
     amountPerMinute: 1
-    perPopulation: 100
-    populationNeededToUnlock: 0
+    populationPerUnit: 100
+    requiredPopulationToUnlock: 0

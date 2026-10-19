@@ -84,17 +84,12 @@ public class PopulationNeedsController : MonoBehaviour, ITickable
                 needs.AccumulatedNeed += CalculateResourceConsumption(needs.NeedResourceData);
                 if (needs.AccumulatedNeed >= 1)
                 {
-                    int amountToTake = Mathf.FloorToInt(needs.AccumulatedNeed);
+                    int amountToTake = HowManyWeCanTake(Mathf.FloorToInt(needs.AccumulatedNeed), needs.NeedResourceData);
+                    needs.AccumulatedNeed -= Mathf.FloorToInt(needs.AccumulatedNeed);
+                    storageManager.GlobalStorage.Remove(needs.NeedResourceData.Ressource, amountToTake);
 
-                    if (storageManager.GlobalStorage.Remove(
-                            needs.NeedResourceData.Ressource, amountToTake))
-                    {
-                        needs.AccumulatedNeed -= amountToTake;
-                    }
-                    else
-                    {
-                        Debug.Log("Not enough " + needs.NeedResourceData.Ressource);
-                    }
+                    Debug.Log("Taking " + amountToTake + " of " + needs.NeedResourceData.Ressource);
+                    Debug.Log("Accumulated Need still left: " + needs.AccumulatedNeed);
                 }
             }
         }
@@ -111,16 +106,31 @@ public class PopulationNeedsController : MonoBehaviour, ITickable
         }
     }
 
-
-
     float CalculateResourceConsumption(NeedResourceData resource) {
-        // here needs later be a check for diffrent populations tiers wish that TODO: works like in vs code with the addon TODO Tree oder so xD, oh wait no i dont need the check -.-
         float amount = resource.AmountPerMinute
                      * (populationManager.CurrentPopulation / (float)resource.PopulationPerUnit)
                      * (updateInterval / 60f); return amount;
     }
 
-    //mmm wenn tier 1 und tier 2 beide holz brauchen mache 2 unterschiedliche needstates? also weil die einen eventull doppelt soviel holz pro 100 einwohner brauchen? also unterschiedliche wertigkeit des bedurfniss
+    int HowManyWeCanTake(int neededAmount, NeedResourceData resource)
+    {
+        int amountInStorage = storageManager.GlobalStorage.GetAmount(resource.Ressource);
+        return Mathf.Min(amountInStorage, neededAmount);
+    }
+
+    // TODO: later after gamecontroller/ placement off buildigns
+    float CalculateSupplyRatio(int neededAmount, int suppliedAmount)
+    {
+        return 0;
+    }
+
+    // TODO: later after gamecontroller/ placement off buildigngs
+
+    bool DoWeNeedToCalculate(NeedResourceData resource)
+    {
+        return false;
+    }
+
     void InitializeNeedStates()
     {
         foreach (PopulationNeed tierNeed in populationNeeds)

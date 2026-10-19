@@ -2,7 +2,7 @@ using NUnit.Framework;
 using UnityEngine;
 using System.Collections.Generic;
 
-//execution order und auf -10 setzen
+[DefaultExecutionOrder(-10)]
 public class TickController : MonoBehaviour
 {
     //Instance
@@ -10,14 +10,13 @@ public class TickController : MonoBehaviour
 
     //all ITickables
     //ist list sinnvoll? weil das ja am ende ein O(N) wird
-    List<ITickable> stuffThatsNeedUpdates;
+    List<ITickable> stuffThatsNeedUpdates = new();
 
     private void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
-            stuffThatsNeedUpdates = new List<ITickable>();
         }
         else
         {

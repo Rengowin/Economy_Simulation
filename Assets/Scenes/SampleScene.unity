@@ -446,7 +446,7 @@ MonoBehaviour:
   tickController: {fileID: 1092064397}
   populationManager: {fileID: 1817173129}
   storageManager: {fileID: 644882177}
-  UpdateInterval: 5
+  updateInterval: 5
   populationNeeds:
   - {fileID: 11400000, guid: db3a6958206c4364783b902d9e76fb1f, type: 2}
 --- !u!4 &465624337
@@ -638,6 +638,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InputController
   buildingManager: {fileID: 856979169}
+  debugRessource: 110
 --- !u!4 &1024251657
 Transform:
   m_ObjectHideFlags: 0
@@ -758,11 +759,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73f810a10cf5ee1448b86769fa5cb8e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PopulationManager
-  timeToNextDebug: 5
+  debugInterval: 5
   tickController: {fileID: 0}
   currentPopulation: 0
   growthRate: 0
-  ressouceToEat: 0
+  growthResource: 0
   storageManager: {fileID: 0}
 --- !u!4 &1817173130
 Transform:

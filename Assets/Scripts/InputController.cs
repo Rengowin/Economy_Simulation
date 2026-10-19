@@ -8,6 +8,9 @@ public class InputController : MonoBehaviour
     [SerializeField]
     BuildingManager buildingManager;
 
+    [SerializeField]
+    int debugRessource = 0;
+
     void Awake()
     {
         inputActions = new InputSystem_Actions();
@@ -15,6 +18,7 @@ public class InputController : MonoBehaviour
         inputActions.BuildModus.SpawnWoodCutter.performed += ctx => SpawnWoodCutter();
         inputActions.BuildModus.SpawnSawMill.performed += ctx => SpawnSawMill();
         inputActions.BuildModus.SpawnHut.performed += ctx => SpawnHut();
+        inputActions.BuildModus.GiveWood.performed += ctx => GiveWood();
     }
 
     void Start()
@@ -52,5 +56,10 @@ public class InputController : MonoBehaviour
     void SpawnHut()
     {
         buildingManager.SpawnTestHut(new Vector3(10, 0, 0));
+    }
+
+    void GiveWood()
+    {
+        StorageManager.Instance.GlobalStorage.Add(ResourceType.Wood, debugRessource);
     }
 }
