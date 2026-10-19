@@ -7,12 +7,24 @@ public class InputController : MonoBehaviour
     InputSystem_Actions inputActions;
     [SerializeField]
     BuildingManager buildingManager;
+    [SerializeField]
+    CameraController cameraController;
 
     [SerializeField]
     int debugRessource = 0;
 
     void Awake()
     {
+        if(buildingManager == null)
+        {
+            buildingManager = BuildingManager.Instance;
+        }
+
+        if (cameraController == null)
+        {
+            cameraController = CameraController.Instance;
+        }
+
         inputActions = new InputSystem_Actions();
 
         inputActions.BuildModus.SpawnWoodCutter.performed += ctx => SpawnWoodCutter();
@@ -31,6 +43,17 @@ public class InputController : MonoBehaviour
         {
             buildingManager = BuildingManager.Instance;
         }
+    }
+
+    void Update()
+    {
+        Vector2 move = inputActions.Camera.Move.ReadValue<Vector2>();
+        float rotate = inputActions.Camera.Rotate.ReadValue<float>();
+        float zoom = inputActions.Camera.Zoom.ReadValue<float>();
+
+        cameraController.Move(move);
+        cameraController.Rotate(rotate);
+        cameraController.Zoom(zoom);
     }
 
     void OnEnable()

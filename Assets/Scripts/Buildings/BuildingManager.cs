@@ -1,5 +1,5 @@
 using UnityEngine;
-
+[DefaultExecutionOrder(-1)]
 public class BuildingManager : MonoBehaviour
 {
     public static BuildingManager Instance { get; private set; }
