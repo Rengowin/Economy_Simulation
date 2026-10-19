@@ -45,17 +45,26 @@ public class InputController : MonoBehaviour
 
     void SpawnWoodCutter()
     {
-        buildingManager.SpawnTestWoodCutter(GetMouseWorldPosition());
+        if (TryGetMouseWorldPosition(out Vector3 position))
+        {
+            buildingManager.SpawnTestWoodCutter(position);
+        }
     }
 
     void SpawnSawMill()
     {
-        buildingManager.SpawnTestSawMill(GetMouseWorldPosition());
+        if (TryGetMouseWorldPosition(out Vector3 position))
+        {
+            buildingManager.SpawnTestSawMill(position);
+        }
     }
 
     void SpawnHut()
     {
-        buildingManager.SpawnTestHut(GetMouseWorldPosition());
+        if (TryGetMouseWorldPosition(out Vector3 position))
+        {
+            buildingManager.SpawnTestHut(position);
+        }
     }
 
     void GiveWood()
@@ -64,21 +73,41 @@ public class InputController : MonoBehaviour
     }
 
 
-    Vector3 GetMouseWorldPosition()
+    //Vector3 GetMouseWorldPosition()
+    //{
+    //    Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
+    //    Vector2 mousePosition = Mouse.current.position.ReadValue();
+    //    Ray ray = Camera.main.ScreenPointToRay(mousePosition);
+
+    //    //if (groundPlane.Raycast(ray, out RaycastHit hit))
+    //    //{
+    //    //    return hit.point;
+    //    //}
+
+    //    if (groundPlane.Raycast(ray, out float enter))
+    //    {
+    //        return ray.GetPoint(enter);
+    //    }
+    //    else
+    //    {
+    //        Debug.LogError("Mouse ray did not hit the ground plane.");
+    //        return Vector3.zero;
+    //    }
+    //}
+
+    bool TryGetMouseWorldPosition(out Vector3 position)
     {
         Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
-        Vector2 mousePosition = Mouse.current.position.ReadValue();
-        Ray ray = Camera.main.ScreenPointToRay(mousePosition);
+        Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
 
         if (groundPlane.Raycast(ray, out float distance))
         {
-            Vector3 worldPosition = ray.GetPoint(distance);
-            return new Vector3(worldPosition.x, 0, worldPosition.z);
+            position = ray.GetPoint(distance);
+            return true;
         }
-        else
-        {
-            Debug.LogError("Mouse ray did not hit the ground plane.");
-            return Vector3.zero;
-        }
+
+        Debug.LogError("Mouse ray did not hit the ground plane.");
+        position = Vector3.zero;
+        return false;
     }
 }
