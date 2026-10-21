@@ -966,26 +966,37 @@
             ],
             "bindings": [
                 {
-                    "name": "",
-                    "id": "3048adda-9ebb-4d62-b233-520239555c80",
-                    "path": "<Keyboard>/q",
+                    "name": "1D Axis",
+                    "id": "29f6a662-0593-4e91-99d4-ee8131fca4ea",
+                    "path": "1DAxis",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";Keyboard&Mouse",
+                    "groups": "",
                     "action": "Rotate",
-                    "isComposite": false,
+                    "isComposite": true,
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "",
-                    "id": "89d2dc7a-522b-4d46-81dd-684aa414a594",
+                    "name": "negative",
+                    "id": "9b922df3-ab9d-4569-8dff-78308e066192",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Rotate",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "ac8299fa-1e9b-44b7-9b51-d41c90422051",
                     "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";Keyboard&Mouse",
+                    "groups": "",
                     "action": "Rotate",
                     "isComposite": false,
-                    "isPartOfComposite": false
+                    "isPartOfComposite": true
                 },
                 {
                     "name": "",

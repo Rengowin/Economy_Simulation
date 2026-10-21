@@ -8,6 +8,12 @@ public class CameraController : MonoBehaviour
     [SerializeField]
     float moveSpeed = 5f;
 
+    [SerializeField]
+    float rotateSpeed = 5f;
+
+    [SerializeField]
+    float zoomSpeed = 5f;
+
     void Awake()
     {
         if (Instance == null)
@@ -31,11 +37,18 @@ public class CameraController : MonoBehaviour
 
     public void Rotate(float rotate)
     {
-        // Implement camera rotation logic here
+        transform.Rotate(
+            Vector3.up,
+            rotate * rotateSpeed * Time.deltaTime,
+            Space.World
+        );
     }
 
     public void Zoom(float zoom)
     {
-        // Implement camera zoom logic here
+        transform.Translate(
+            Vector3.forward * zoom * zoomSpeed * Time.deltaTime,
+            Space.Self
+        );
     }
 }
