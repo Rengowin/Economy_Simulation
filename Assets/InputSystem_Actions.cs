@@ -993,17 +993,6 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""fa127cb8-4a77-4a71-a3d5-3b9723f7dfd2"",
-                    ""path"": """",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""GiveWood"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""9f99b618-64f7-486d-97af-b59f78ef9614"",
                     ""path"": ""<Keyboard>/h"",
                     ""interactions"": """",
@@ -1151,6 +1140,111 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 }
             ]
+        },
+        {
+            ""name"": ""Core"",
+            ""id"": ""08406be5-4c98-487c-ab74-e20edae9418f"",
+            ""actions"": [
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""bf2e8907-51a8-497a-af7f-4617dbefe371"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false,
+                    ""priority"": 0
+                },
+                {
+                    ""name"": ""ChangeTickSpeed"",
+                    ""type"": ""Button"",
+                    ""id"": ""70765030-410d-4290-972c-768cf459d009"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false,
+                    ""priority"": 0
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""24d570d2-21fc-4255-ab94-815e9cc7b552"",
+                    ""path"": ""<Keyboard>/p"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""3885a342-4478-4e24-a587-3bcf6a64a710"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeTickSpeed"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""331b9a31-b055-45be-b6da-ac7d62618b39"",
+                    ""path"": ""<Keyboard>/minus"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeTickSpeed"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""4a2cdbe9-b13a-42a7-b4a4-4e36a2b89d8d"",
+                    ""path"": ""<Keyboard>/numpadPlus"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeTickSpeed"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""76797fb5-a876-4507-85af-f0b12799b976"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeTickSpeed"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""7309e22f-78a7-43a1-b75c-09f5f67f721c"",
+                    ""path"": ""<Keyboard>/z"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeTickSpeed"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""6c483102-9d03-42c7-84f7-2c3b9780258f"",
+                    ""path"": ""<Keyboard>/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeTickSpeed"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -1248,6 +1342,10 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_Camera_Move = m_Camera.FindAction("Move", throwIfNotFound: true);
         m_Camera_Rotate = m_Camera.FindAction("Rotate", throwIfNotFound: true);
         m_Camera_Zoom = m_Camera.FindAction("Zoom", throwIfNotFound: true);
+        // Core
+        m_Core = asset.FindActionMap("Core", throwIfNotFound: true);
+        m_Core_Pause = m_Core.FindAction("Pause", throwIfNotFound: true);
+        m_Core_ChangeTickSpeed = m_Core.FindAction("ChangeTickSpeed", throwIfNotFound: true);
     }
 
     ~@InputSystem_Actions()
@@ -1256,6 +1354,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         UnityEngine.Debug.Assert(!m_UI.enabled, "This will cause a leak and performance issues, InputSystem_Actions.UI.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_BuildModus.enabled, "This will cause a leak and performance issues, InputSystem_Actions.BuildModus.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_Camera.enabled, "This will cause a leak and performance issues, InputSystem_Actions.Camera.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_Core.enabled, "This will cause a leak and performance issues, InputSystem_Actions.Core.Disable() has not been called.");
     }
 
     /// <summary>
@@ -1931,6 +2030,113 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     /// Provides a new <see cref="CameraActions" /> instance referencing this action map.
     /// </summary>
     public CameraActions @Camera => new CameraActions(this);
+
+    // Core
+    private readonly InputActionMap m_Core;
+    private List<ICoreActions> m_CoreActionsCallbackInterfaces = new List<ICoreActions>();
+    private readonly InputAction m_Core_Pause;
+    private readonly InputAction m_Core_ChangeTickSpeed;
+    /// <summary>
+    /// Provides access to input actions defined in input action map "Core".
+    /// </summary>
+    public struct CoreActions
+    {
+        private @InputSystem_Actions m_Wrapper;
+
+        /// <summary>
+        /// Construct a new instance of the input action map wrapper class.
+        /// </summary>
+        public CoreActions(@InputSystem_Actions wrapper) { m_Wrapper = wrapper; }
+        /// <summary>
+        /// Provides access to the underlying input action "Core/Pause".
+        /// </summary>
+        public InputAction @Pause => m_Wrapper.m_Core_Pause;
+        /// <summary>
+        /// Provides access to the underlying input action "Core/ChangeTickSpeed".
+        /// </summary>
+        public InputAction @ChangeTickSpeed => m_Wrapper.m_Core_ChangeTickSpeed;
+        /// <summary>
+        /// Provides access to the underlying input action map instance.
+        /// </summary>
+        public InputActionMap Get() { return m_Wrapper.m_Core; }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
+        public void Enable() { Get().Enable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
+        public void Disable() { Get().Disable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
+        public bool enabled => Get().enabled;
+        /// <summary>
+        /// Implicitly converts an <see ref="CoreActions" /> to an <see ref="InputActionMap" /> instance.
+        /// </summary>
+        public static implicit operator InputActionMap(CoreActions set) { return set.Get(); }
+        /// <summary>
+        /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <param name="instance">Callback instance.</param>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
+        /// </remarks>
+        /// <seealso cref="CoreActions" />
+        public void AddCallbacks(ICoreActions instance)
+        {
+            if (instance == null || m_Wrapper.m_CoreActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_CoreActionsCallbackInterfaces.Add(instance);
+            @Pause.started += instance.OnPause;
+            @Pause.performed += instance.OnPause;
+            @Pause.canceled += instance.OnPause;
+            @ChangeTickSpeed.started += instance.OnChangeTickSpeed;
+            @ChangeTickSpeed.performed += instance.OnChangeTickSpeed;
+            @ChangeTickSpeed.canceled += instance.OnChangeTickSpeed;
+        }
+
+        /// <summary>
+        /// Removes <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <remarks>
+        /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
+        /// </remarks>
+        /// <seealso cref="CoreActions" />
+        private void UnregisterCallbacks(ICoreActions instance)
+        {
+            @Pause.started -= instance.OnPause;
+            @Pause.performed -= instance.OnPause;
+            @Pause.canceled -= instance.OnPause;
+            @ChangeTickSpeed.started -= instance.OnChangeTickSpeed;
+            @ChangeTickSpeed.performed -= instance.OnChangeTickSpeed;
+            @ChangeTickSpeed.canceled -= instance.OnChangeTickSpeed;
+        }
+
+        /// <summary>
+        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="CoreActions.UnregisterCallbacks(ICoreActions)" />.
+        /// </summary>
+        /// <seealso cref="CoreActions.UnregisterCallbacks(ICoreActions)" />
+        public void RemoveCallbacks(ICoreActions instance)
+        {
+            if (m_Wrapper.m_CoreActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        /// <summary>
+        /// Replaces all existing callback instances and previously registered input action callbacks associated with them with callbacks provided via <param cref="instance" />.
+        /// </summary>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
+        /// </remarks>
+        /// <seealso cref="CoreActions.AddCallbacks(ICoreActions)" />
+        /// <seealso cref="CoreActions.RemoveCallbacks(ICoreActions)" />
+        /// <seealso cref="CoreActions.UnregisterCallbacks(ICoreActions)" />
+        public void SetCallbacks(ICoreActions instance)
+        {
+            foreach (var item in m_Wrapper.m_CoreActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_CoreActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    /// <summary>
+    /// Provides a new <see cref="CoreActions" /> instance referencing this action map.
+    /// </summary>
+    public CoreActions @Core => new CoreActions(this);
     private int m_KeyboardMouseSchemeIndex = -1;
     /// <summary>
     /// Provides access to the input control scheme.
@@ -2195,5 +2401,27 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnZoom(InputAction.CallbackContext context);
+    }
+    /// <summary>
+    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Core" which allows adding and removing callbacks.
+    /// </summary>
+    /// <seealso cref="CoreActions.AddCallbacks(ICoreActions)" />
+    /// <seealso cref="CoreActions.RemoveCallbacks(ICoreActions)" />
+    public interface ICoreActions
+    {
+        /// <summary>
+        /// Method invoked when associated input action "Pause" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnPause(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "ChangeTickSpeed" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnChangeTickSpeed(InputAction.CallbackContext context);
     }
 }

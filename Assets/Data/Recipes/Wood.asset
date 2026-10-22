@@ -16,4 +16,4 @@ MonoBehaviour:
   output:
   - ressource: 0
     amount: 1
-  productionTime: 5
+  productionTime: 10

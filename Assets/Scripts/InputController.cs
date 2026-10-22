@@ -9,6 +9,8 @@ public class InputController : MonoBehaviour
     BuildingManager buildingManager;
     [SerializeField]
     CameraController cameraController;
+    [SerializeField]
+    GameController gameController;
 
     [SerializeField]
     int debugRessource = 0;
@@ -24,6 +26,10 @@ public class InputController : MonoBehaviour
         {
             cameraController = CameraController.Instance;
         }
+        if (gameController == null)
+        {
+            gameController = GameController.Instance;
+        }
 
         inputActions = new InputSystem_Actions();
 
@@ -31,6 +37,9 @@ public class InputController : MonoBehaviour
         inputActions.BuildModus.SpawnSawMill.performed += ctx => SpawnSawMill();
         inputActions.BuildModus.SpawnHut.performed += ctx => SpawnHut();
         inputActions.BuildModus.GiveWood.performed += ctx => GiveWood();
+
+        inputActions.Core.ChangeTickSpeed.performed += ctx => ChangeTickSpeed((int)ctx.ReadValue<float>());
+        inputActions.Core.Pause.performed += ctx => PauseGame();
     }
 
     void Start()
@@ -47,6 +56,7 @@ public class InputController : MonoBehaviour
 
     void Update()
     {
+        // sind in update weil die immer wiederholt aufgerufen werden sollen (aber sollte das in in awake reichen? die performed bzw cxt zu setzten?)
         Vector2 move = inputActions.Camera.Move.ReadValue<Vector2>();
         float rotate = inputActions.Camera.Rotate.ReadValue<float>();
         float zoom = inputActions.Camera.Zoom.ReadValue<float>();
@@ -132,5 +142,15 @@ public class InputController : MonoBehaviour
         Debug.LogError("Mouse ray did not hit the ground plane.");
         position = Vector3.zero;
         return false;
+    }
+
+    void ChangeTickSpeed(int change)
+    {
+        gameController.ChangeTimeScale(change);
+    }
+
+    void PauseGame()
+    {
+        gameController.PauseGame();
     }
 }

@@ -9,10 +9,15 @@ public class CameraController : MonoBehaviour
     float moveSpeed = 5f;
 
     [SerializeField]
-    float rotateSpeed = 5f;
+    float rotateSpeed = 30f;
 
     [SerializeField]
     float zoomSpeed = 5f;
+
+    [SerializeField]
+    int minZoom = 5;
+    [SerializeField]
+    int maxZoom = 20;
 
     void Awake()
     {
@@ -32,23 +37,23 @@ public class CameraController : MonoBehaviour
 
         Vector3 movement = rotation * new Vector3(dir.x, 0, dir.y);
 
-        transform.position += movement * moveSpeed * Time.deltaTime;
+        transform.position += movement * moveSpeed * Time.unscaledDeltaTime;
     }
 
     public void Rotate(float rotate)
     {
         transform.Rotate(
             Vector3.up,
-            rotate * rotateSpeed * Time.deltaTime,
+            rotate * rotateSpeed * Time.unscaledDeltaTime,
             Space.World
         );
     }
 
     public void Zoom(float zoom)
     {
-        transform.Translate(
-            Vector3.forward * zoom * zoomSpeed * Time.deltaTime,
-            Space.Self
-        );
+        Vector3 position = transform.position;
+        position += transform.forward * zoom * zoomSpeed;
+        position.y = Mathf.Clamp(position.y, minZoom, maxZoom);
+        transform.position = position;
     }
 }
