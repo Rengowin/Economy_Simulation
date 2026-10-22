@@ -118,10 +118,12 @@ public class PopulationNeedsController : MonoBehaviour, ITickable
         return Mathf.Min(amountInStorage, neededAmount);
     }
 
-    // TODO: later after gamecontroller/ placement off buildigns
     float CalculateSupplyRatio(int neededAmount, int suppliedAmount)
     {
-        return 0;
+        if (neededAmount == 0)
+            return 0f;
+
+        return Mathf.Clamp01(suppliedAmount / (float)neededAmount);
     }
 
     // TODO: later after gamecontroller/ placement off buildigngs
