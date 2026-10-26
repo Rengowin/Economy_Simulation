@@ -14,10 +14,13 @@ public class PopulationNeedsController : MonoBehaviour, ITickable
     int updateInterval = 5;
     float currentTime;
 
+    [SerializeField, Min(1)]
+    int fulfillmentDurationInIntervals = 3;
 
     [SerializeField]
     List<PopulationNeed> populationNeeds;
 
+    [SerializeField]
     List<NeedState> needStates = new();
 
     void OnEnable()
@@ -63,6 +66,7 @@ public class PopulationNeedsController : MonoBehaviour, ITickable
             UpdateNeeds();
             UpdateDebug();
         }
+        UpdateFulfillment(deltaTime);
     }
 
     void UpdateUnlocks()
@@ -81,17 +85,45 @@ public class PopulationNeedsController : MonoBehaviour, ITickable
         {
             if (needs.Unlocked)
             {
-                needs.AccumulatedNeed += CalculateResourceConsumption(needs.NeedResourceData);
+                int amountInStorage = storageManager.GlobalStorage.GetAmount(needs.NeedResourceData.Ressource);
+                float consumption = CalculateResourceConsumption(needs.NeedResourceData);
+
+                needs.AccumulatedNeed += consumption;
+                needs.SupplyRatio = CalculateSupplyRatio(consumption, amountInStorage); 
+
                 if (needs.AccumulatedNeed >= 1)
                 {
-                    int amountToTake = HowManyWeCanTake(Mathf.FloorToInt(needs.AccumulatedNeed), needs.NeedResourceData);
-                    needs.AccumulatedNeed -= Mathf.FloorToInt(needs.AccumulatedNeed);
-                    storageManager.GlobalStorage.Remove(needs.NeedResourceData.Ressource, amountToTake);
+                    int neededAmount = Mathf.FloorToInt(needs.AccumulatedNeed);
+                    int amountToTake = HowManyWeCanTake(
+                        neededAmount,
+                        needs.NeedResourceData
+                    );
 
-                    Debug.Log("Taking " + amountToTake + " of " + needs.NeedResourceData.Ressource);
-                    Debug.Log("Accumulated Need still left: " + needs.AccumulatedNeed);
+                    needs.AccumulatedNeed -= neededAmount;
+
+                    storageManager.GlobalStorage.Remove(
+                        needs.NeedResourceData.Ressource,
+                        amountToTake
+                    );
                 }
             }
+        }
+    }
+
+    void UpdateFulfillment(float deltaTime)
+    {
+        float duration = fulfillmentDurationInIntervals * updateInterval;
+
+        foreach (NeedState needs in needStates)
+        {
+            if (!needs.Unlocked)
+                continue;
+
+            needs.Fulfillment = Mathf.MoveTowards(
+                needs.Fulfillment,
+                needs.SupplyRatio,
+                deltaTime / duration
+            );
         }
     }
 
@@ -118,12 +150,12 @@ public class PopulationNeedsController : MonoBehaviour, ITickable
         return Mathf.Min(amountInStorage, neededAmount);
     }
 
-    float CalculateSupplyRatio(int neededAmount, int suppliedAmount)
+    float CalculateSupplyRatio(float neededAmount, float suppliedAmount)
     {
         if (neededAmount == 0)
             return 0f;
 
-        return Mathf.Clamp01(suppliedAmount / (float)neededAmount);
+        return Mathf.Clamp01(suppliedAmount / neededAmount);
     }
 
     // TODO: later after gamecontroller/ placement off buildigngs

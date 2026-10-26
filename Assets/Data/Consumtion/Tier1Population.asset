@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PopulationNeed
   needResources:
   - resource: 0
-    amountPerMinute: 1
+    amountPerMinute: 60
     populationPerUnit: 100
     requiredPopulationToUnlock: 0

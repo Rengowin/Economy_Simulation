@@ -179,6 +179,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a197b1d181798cf47aa95379c7d0d2ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameController
+  currentTimeScale: 1
   maxTimeScale: 10
   minTimeScale: 1
 --- !u!4 &272359769
@@ -511,8 +512,10 @@ MonoBehaviour:
   populationManager: {fileID: 1817173129}
   storageManager: {fileID: 644882177}
   updateInterval: 5
+  fulfillmentDurationInIntervals: 3
   populationNeeds:
   - {fileID: 11400000, guid: db3a6958206c4364783b902d9e76fb1f, type: 2}
+  needStates: []
 --- !u!4 &465624337
 Transform:
   m_ObjectHideFlags: 0
@@ -704,7 +707,7 @@ MonoBehaviour:
   buildingManager: {fileID: 856979169}
   cameraController: {fileID: 330585548}
   gameController: {fileID: 272359768}
-  debugRessource: 110
+  debugRessource: 13
 --- !u!4 &1024251657
 Transform:
   m_ObjectHideFlags: 0
