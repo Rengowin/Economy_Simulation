@@ -2,6 +2,10 @@ using UnityEngine;
 
 public class StorageManager : MonoBehaviour, ITickable
 {
+
+    // eventull evalieren ob float für die ressourcen mehr sinn macht
+
+
     //Instance of GlobalStorage
     public static StorageManager Instance;
     Storage globalStorage = new Storage();

@@ -165,6 +165,23 @@ public class PopulationNeedsController : MonoBehaviour, ITickable
         return false;
     }
 
+    public float CalculateAverageFulfillment() {
+        int unlockedNeedsCount = 0;
+        float sumFulfillment = 0f;
+
+        foreach (NeedState needs in needStates)
+        {
+            if (needs.Unlocked)
+            {
+                unlockedNeedsCount++;
+                sumFulfillment += needs.Fulfillment;
+            }
+        }
+        if(unlockedNeedsCount == 0)
+            return 0f;
+        return sumFulfillment / unlockedNeedsCount;
+    }
+
     void InitializeNeedStates()
     {
         foreach (PopulationNeed tierNeed in populationNeeds)

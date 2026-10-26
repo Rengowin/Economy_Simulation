@@ -12,8 +12,8 @@ public class ResidentialBuilding : MonoBehaviour, ITickable
     [SerializeField]
     TickController tickController;
 
-    [SerializeField]
-    float timeBetweenPopulationGrowth;
+    [SerializeField, Min(0.01f)]
+    float timeBetweenPopulationGrowth = 5f;
     float currentTime;
 
     // setter for later buffs/calc of what pupulation it should be
@@ -22,7 +22,7 @@ public class ResidentialBuilding : MonoBehaviour, ITickable
 
     void Start()
     {
-        currentPopulation = maxPopulation; // TODO: Remove after testing
+        currentPopulation = 1; // TODO: Remove after testing / as soon as i have a idear how to start with population  
     }
 
 

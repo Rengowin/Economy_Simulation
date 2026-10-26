@@ -18,14 +18,10 @@ public class PopulationManager : MonoBehaviour, ITickable
     [SerializeField, Range(0, 1)]
     float growthRate;
 
-    //später zum scriptableObject machen jetzt enum nur wegen testen
-    [SerializeField]
-    ResourceType growthResource;
-
-    [SerializeField]
-    StorageManager storageManager;
-
     List<ResidentialBuilding> residentialBuildings = new List<ResidentialBuilding>();
+
+    [SerializeField]
+    PopulationNeedsController populationNeedsController;
 
 
     public float GrowthRatePercentage { get => growthRate; }
@@ -51,9 +47,10 @@ public class PopulationManager : MonoBehaviour, ITickable
             tickController = TickController.Instance;
         }
         tickController.Register(this);
-        if(storageManager == null)
+
+        if (populationNeedsController == null)
         {
-            storageManager = StorageManager.Instance;
+            Debug.LogError("PopulationNeedsController is missing!", this);
         }
     }
 
@@ -77,7 +74,6 @@ public class PopulationManager : MonoBehaviour, ITickable
         Debug.Log("Current Population: " + currentPopulation + " / " + CalculateMaxPopulation());
         Debug.Log(
             "Population: " + currentPopulation +
-            " | Wood: " + storageManager.GlobalStorage.GetAmount(growthResource) +
             " | Growth Rate: " + growthRate * 100 + "%"
         );
     }
@@ -104,18 +100,7 @@ public class PopulationManager : MonoBehaviour, ITickable
     // right now just the one ressource later for every ressources that maybe needed (but will also look for the individaul resources)
     void CalculateGrowthRate()
     {
-        float neededAmount = currentPopulation;
-        float currentAmount = storageManager.GlobalStorage.GetAmount(growthResource);
-        //checken für nan/null also wenn durch 0 geteilt wird oder so
-        if (neededAmount == 0)
-        {
-            growthRate = 1;
-        }
-        else
-        {
-            growthRate = Mathf.Clamp01(currentAmount / neededAmount);
-        }
-
+        growthRate = populationNeedsController.CalculateAverageFulfillment();
     }
 
 

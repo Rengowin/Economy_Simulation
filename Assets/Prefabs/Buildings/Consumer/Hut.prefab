@@ -128,4 +128,5 @@ MonoBehaviour:
   currentPopulation: 0
   maxPopulation: 10
   populationManager: {fileID: 0}
-  timeToNextPopGrouth: 2
+  tickController: {fileID: 0}
+  timeBetweenPopulationGrowth: 5
