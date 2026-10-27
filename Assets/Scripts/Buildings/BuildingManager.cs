@@ -1,3 +1,5 @@
+using NUnit.Framework;
+using System.Collections.Generic;
 using UnityEngine;
 [DefaultExecutionOrder(-1)]
 public class BuildingManager : MonoBehaviour
@@ -58,10 +60,10 @@ public class BuildingManager : MonoBehaviour
 
     public void BuildBuilding(BuildingData buildingData, Vector3 position)
     {
-        if (canBuild(buildingData.BuildCost))
+        if (canBuild(buildingData.BuildCosts))
         {
             SpawnBuilding(buildingData.BuildingPrefab, position);
-            foreach (ResourceAmount resource in buildingData.BuildCost.Cost)
+            foreach (ResourceAmount resource in buildingData.BuildCosts)
             {
                 storageManager.GlobalStorage.Remove(resource.Ressource, resource.Amount);
             }
@@ -77,11 +79,11 @@ public class BuildingManager : MonoBehaviour
         Instantiate(buildingPrefab, position, Quaternion.identity, buildingContainer);
     }
 
-    bool canBuild(BuildCost cost)
+    bool canBuild(List<ResourceAmount> cost)
     {
-        foreach (ResourceAmount resource in cost.Cost)
+        foreach (ResourceAmount resource in cost)
         {
-            if (StorageManager.Instance.GlobalStorage.GetAmount(resource.Ressource) < resource.Amount)
+            if (storageManager.GlobalStorage.GetAmount(resource.Ressource) < resource.Amount)
             {
                 return false;
             }

@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: Hut
   m_EditorClassIdentifier: Assembly-CSharp::BuildingData
   buildingPrefab: {fileID: 2020611811090214880, guid: 003795780b710fa478629c8b274a808f, type: 3}
-  buildCost: {fileID: 11400000, guid: 5e6a154fd92695043810c09ef839e0c0, type: 2}
+  buildCosts:
+  - ressource: 0
+    amount: 1

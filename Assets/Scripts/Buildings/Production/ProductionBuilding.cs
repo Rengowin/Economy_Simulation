@@ -1,17 +1,11 @@
-using System.Data;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class ProductionBuilding : MonoBehaviour, ITickable
 {
     [Header("Recipe")]
     [SerializeField]
     ProductionRecipe recipe;
-
-    [Header("BuildCost")]
-    [SerializeField]
-    BuildCost buildCost;
-
     [Header("TimeReference")]
     [SerializeField]
     float productionDuration;

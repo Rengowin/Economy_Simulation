@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: SawMill
   m_EditorClassIdentifier: Assembly-CSharp::BuildingData
   buildingPrefab: {fileID: 4370519625553309334, guid: 93fc194a873c76342bb0c56f6081626c, type: 3}
-  buildCost: {fileID: 11400000, guid: fd9620be0957ae2409bd780250221a92, type: 2}
+  buildCosts:
+  - ressource: 0
+    amount: 5
