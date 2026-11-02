@@ -57,9 +57,9 @@ public class StorageManager : MonoBehaviour, ITickable
     // should show all current ressourse in the storage and their amount
     void ShowDebugStorage()
     {
-        foreach (ResourceType ressource in System.Enum.GetValues(typeof(ResourceType)))
+        foreach (var resource in globalStorage.Resources)
         {
-            Debug.Log(ressource + ": " + globalStorage.GetAmount(ressource));
+            Debug.Log(resource.Key.ResourceName + ": " + resource.Value);
         }
     }
 

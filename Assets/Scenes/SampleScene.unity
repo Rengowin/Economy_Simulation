@@ -821,6 +821,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4936976373121710334, guid: cc21d86fb23566e44a07a2fa37a7ab03, type: 3}
+      propertyPath: buildingData
+      value: 
+      objectReference: {fileID: 11400000, guid: a179c35e5770b4848ada2619722fd605, type: 2}
     - target: {fileID: 5970691108502019076, guid: cc21d86fb23566e44a07a2fa37a7ab03, type: 3}
       propertyPath: m_Name
       value: Building (2)
@@ -898,6 +902,10 @@ PrefabInstance:
     - target: {fileID: 703808219420616041, guid: cf5799799783b17498bb1c99f1ac2ff4, type: 3}
       propertyPath: m_Name
       value: RessourceType1 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3820516287541108364, guid: cf5799799783b17498bb1c99f1ac2ff4, type: 3}
+      propertyPath: m_text
+      value: Wood
       objectReference: {fileID: 0}
     - target: {fileID: 4720760812293380953, guid: cf5799799783b17498bb1c99f1ac2ff4, type: 3}
       propertyPath: m_Pivot.x
@@ -1183,6 +1191,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4936976373121710334, guid: cc21d86fb23566e44a07a2fa37a7ab03, type: 3}
+      propertyPath: buildingData
+      value: 
+      objectReference: {fileID: 11400000, guid: 3837f6634095f994d80d3ecf9bddf3c5, type: 2}
     - target: {fileID: 5970691108502019076, guid: cc21d86fb23566e44a07a2fa37a7ab03, type: 3}
       propertyPath: m_Name
       value: Building (1)
@@ -1208,6 +1220,10 @@ PrefabInstance:
     - target: {fileID: 703808219420616041, guid: cf5799799783b17498bb1c99f1ac2ff4, type: 3}
       propertyPath: m_Name
       value: RessourceType1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3820516287541108364, guid: cf5799799783b17498bb1c99f1ac2ff4, type: 3}
+      propertyPath: m_text
+      value: Air/Nothing
       objectReference: {fileID: 0}
     - target: {fileID: 4720760812293380953, guid: cf5799799783b17498bb1c99f1ac2ff4, type: 3}
       propertyPath: m_Pivot.x
@@ -1636,6 +1652,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RessourceType1 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 3820516287541108364, guid: cf5799799783b17498bb1c99f1ac2ff4, type: 3}
+      propertyPath: m_text
+      value: Population
+      objectReference: {fileID: 0}
     - target: {fileID: 4720760812293380953, guid: cf5799799783b17498bb1c99f1ac2ff4, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1757,8 +1777,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UIRessourceController
   woodText: {fileID: 2063212837}
   planksText: {fileID: 684390359}
-  stoneText: {fileID: 1456935875}
   populationText: {fileID: 337493453}
+  woodResource: {fileID: 11400000, guid: dc8da558cef278246b698411dfd026c3, type: 2}
+  planksResource: {fileID: 11400000, guid: 00ee8109042ef8140ad0ddd6f956e3c1, type: 2}
   storageManager: {fileID: 644882177}
   populationManager: {fileID: 1817173129}
 --- !u!4 &1440942914
@@ -1776,17 +1797,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1456935875 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 140377443221934360, guid: cf5799799783b17498bb1c99f1ac2ff4, type: 3}
-  m_PrefabInstance: {fileID: 856560210}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1 &1813790817
 GameObject:
   m_ObjectHideFlags: 0
@@ -1982,6 +1992,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RessourceType1
       objectReference: {fileID: 0}
+    - target: {fileID: 3820516287541108364, guid: cf5799799783b17498bb1c99f1ac2ff4, type: 3}
+      propertyPath: m_text
+      value: Planks
+      objectReference: {fileID: 0}
     - target: {fileID: 4720760812293380953, guid: cf5799799783b17498bb1c99f1ac2ff4, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2154,6 +2168,38 @@ PrefabInstance:
     - target: {fileID: 4447745403236279467, guid: cc21d86fb23566e44a07a2fa37a7ab03, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4936976373121710334, guid: cc21d86fb23566e44a07a2fa37a7ab03, type: 3}
+      propertyPath: buildingData
+      value: 
+      objectReference: {fileID: 11400000, guid: a179c35e5770b4848ada2619722fd605, type: 2}
+    - target: {fileID: 5154037953050219863, guid: cc21d86fb23566e44a07a2fa37a7ab03, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5154037953050219863, guid: cc21d86fb23566e44a07a2fa37a7ab03, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5154037953050219863, guid: cc21d86fb23566e44a07a2fa37a7ab03, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5154037953050219863, guid: cc21d86fb23566e44a07a2fa37a7ab03, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5154037953050219863, guid: cc21d86fb23566e44a07a2fa37a7ab03, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5154037953050219863, guid: cc21d86fb23566e44a07a2fa37a7ab03, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5154037953050219863, guid: cc21d86fb23566e44a07a2fa37a7ab03, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5970691108502019076, guid: cc21d86fb23566e44a07a2fa37a7ab03, type: 3}
       propertyPath: m_Name

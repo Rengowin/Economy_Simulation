@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Tier1Population
   m_EditorClassIdentifier: Assembly-CSharp::PopulationNeed
   needResources:
-  - resource: 0
+  - resource: {fileID: 11400000, guid: dc8da558cef278246b698411dfd026c3, type: 2}
     amountPerMinute: 60
     populationPerUnit: 100
     requiredPopulationToUnlock: 0

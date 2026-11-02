@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BuildingData
   buildingPrefab: {fileID: 4370519625553309334, guid: 93fc194a873c76342bb0c56f6081626c, type: 3}
   buildCosts:
-  - ressource: 0
+  - ressource: {fileID: 11400000, guid: dc8da558cef278246b698411dfd026c3, type: 2}
     amount: 5

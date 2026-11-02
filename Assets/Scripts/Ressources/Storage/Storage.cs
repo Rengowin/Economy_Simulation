@@ -5,6 +5,8 @@ public class Storage: IStorage
 {
     Dictionary<ResourceType, int> resources = new();
 
+    public IReadOnlyDictionary<ResourceType, int> Resources => resources;
+
     public void Add(ResourceType ressource, int amount)
     {
         if (resources.ContainsKey(ressource))

@@ -9,9 +9,10 @@ public class UIRessourceController : MonoBehaviour
     [SerializeField]
     TextMeshProUGUI planksText;
     [SerializeField]
-    TextMeshProUGUI stoneText;
-    [SerializeField]
     TextMeshProUGUI populationText;
+
+    [SerializeField] ResourceType woodResource;
+    [SerializeField] ResourceType planksResource;
 
     [SerializeField]
     StorageManager storageManager;
@@ -33,9 +34,9 @@ public class UIRessourceController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        woodText.text = storageManager.GlobalStorage.GetAmount(ResourceType.Wood).ToString();
-        planksText.text = storageManager.GlobalStorage.GetAmount(ResourceType.Planks).ToString();
-        stoneText.text = storageManager.GlobalStorage.GetAmount(ResourceType.Stone).ToString();
+        woodText.text = storageManager.GlobalStorage.GetAmount(woodResource).ToString();
+        planksText.text = storageManager.GlobalStorage.GetAmount(planksResource).ToString();
+        //stoneText.text = storageManager.GlobalStorage.GetAmount(ResourceType.Stone).ToString();
         populationText.text = populationManager.CurrentPopulation.ToString();
     }
 }

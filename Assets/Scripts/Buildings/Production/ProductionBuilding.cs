@@ -28,10 +28,18 @@ public class ProductionBuilding : MonoBehaviour, ITickable
 
     void OnEnable()
     {
+        if (globalStorage == null)
+        {
+            globalStorage = StorageManager.Instance;
+        }
+
         if (tickController == null)
         {
             tickController = TickController.Instance;
         }
+
+
+        productionDuration = recipe.ProductionTime;
         tickController.Register(this);
     }
     void OnDisable()
@@ -94,6 +102,7 @@ public class ProductionBuilding : MonoBehaviour, ITickable
 
     bool CanProduce()
     {
+
         foreach(ResourceAmount resource in recipe.Input)
         {
             if (!globalStorage.GlobalStorage.Has(resource.Ressource, resource.Amount))

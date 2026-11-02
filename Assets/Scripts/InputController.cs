@@ -4,6 +4,8 @@ using UnityEngine.InputSystem;
 
 public class InputController : MonoBehaviour
 {
+    public static InputController Instance;
+
     InputSystem_Actions inputActions;
     [SerializeField]
     BuildingManager buildingManager;
@@ -15,9 +17,24 @@ public class InputController : MonoBehaviour
     [SerializeField]
     int debugRessource = 0;
 
+
+    BuildingData selectedBuilding;
+    public BuildingData SelectedBuilding { get => selectedBuilding; set => selectedBuilding = value; }
+    //getter for later (idk if needed for a "shader" that shows can buildd or not)
     void Awake()
     {
-        if(buildingManager == null)
+        if(Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Debug.LogError("Multiple instances of InputController found!");
+            Destroy(this);
+        }
+
+
+        if (buildingManager == null)
         {
             buildingManager = BuildingManager.Instance;
         }
@@ -102,7 +119,7 @@ public class InputController : MonoBehaviour
 
     void GiveWood()
     {
-        StorageManager.Instance.GlobalStorage.Add(ResourceType.Wood, debugRessource);
+        //StorageManager.Instance.GlobalStorage.Add(ResourceType.Wood, debugRessource);
     }
 
 

@@ -1,11 +1,14 @@
 using System;
 using UnityEngine;
 
-[Obsolete("need to change into a scriptable object")]
-// nachschauen ob SO's auch einfach ge gette werden können ohne das die irgendwo vor reft wurden also nur im data objekt liegen
-public enum ResourceType
+[CreateAssetMenu(fileName = "ResourceType", menuName = "Scriptable Objects/ResourceType")]
+public class ResourceType : ScriptableObject
 {
-    Wood,
-    Planks,
-    Stone
+    [SerializeField]
+    string resourceName;
+    [SerializeField]
+    Sprite resourceIcon;
+
+    public string ResourceName => resourceName;
+    public Sprite ResourceIcon => resourceIcon;
 }
