@@ -831,39 +831,29 @@
             "id": "0c8017cc-cb13-4f90-8f7e-918b9c968c98",
             "actions": [
                 {
-                    "name": "SpawnSawMill",
-                    "type": "Button",
-                    "id": "d0bc478c-7c5a-4019-93a5-9d8666fd72e6",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false,
-                    "priority": 0
-                },
-                {
-                    "name": "SpawnWoodCutter",
-                    "type": "Button",
-                    "id": "edda01ee-0fc6-41a3-9707-18866ce1edf0",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false,
-                    "priority": 0
-                },
-                {
-                    "name": "SpawnHut",
-                    "type": "Button",
-                    "id": "b8375423-9acf-439a-8630-118aa12bec5d",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false,
-                    "priority": 0
-                },
-                {
                     "name": "GiveWood",
                     "type": "Button",
                     "id": "a7985839-22ba-4a91-a2c4-4572fbf198c9",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false,
+                    "priority": 0
+                },
+                {
+                    "name": "AktivePlacement",
+                    "type": "Button",
+                    "id": "5753636a-2a0e-4868-97a2-064a4b43775a",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false,
+                    "priority": 0
+                },
+                {
+                    "name": "CancelPlacement",
+                    "type": "Button",
+                    "id": "22923a8e-027e-4832-976d-1a4ebb82f88a",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -874,45 +864,34 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "a4519f66-6526-455f-9f6f-18ded43ec7ea",
-                    "path": "<Keyboard>/2",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Keyboard&Mouse",
-                    "action": "SpawnSawMill",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "593c3b5d-14c7-4d6f-9813-4fd3f88aaecd",
-                    "path": "<Keyboard>/1",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Keyboard&Mouse",
-                    "action": "SpawnWoodCutter",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "6ca222b5-3448-4e1c-9538-810ddbdfaedf",
-                    "path": "<Keyboard>/3",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "SpawnHut",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "9f99b618-64f7-486d-97af-b59f78ef9614",
                     "path": "<Keyboard>/h",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "GiveWood",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a4ac3268-99ac-485a-9471-365387e1b8ec",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "AktivePlacement",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e4f1be47-7e98-40e5-ab9f-2a7627fa4c12",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "CancelPlacement",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

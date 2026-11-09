@@ -824,7 +824,11 @@ PrefabInstance:
     - target: {fileID: 4936976373121710334, guid: cc21d86fb23566e44a07a2fa37a7ab03, type: 3}
       propertyPath: buildingData
       value: 
-      objectReference: {fileID: 11400000, guid: a179c35e5770b4848ada2619722fd605, type: 2}
+      objectReference: {fileID: 11400000, guid: 3b57f72a7e791564badaa74fc51a04cd, type: 2}
+    - target: {fileID: 4936976373121710334, guid: cc21d86fb23566e44a07a2fa37a7ab03, type: 3}
+      propertyPath: buildingPrefab
+      value: 
+      objectReference: {fileID: 2020611811090214880, guid: 003795780b710fa478629c8b274a808f, type: 3}
     - target: {fileID: 5970691108502019076, guid: cc21d86fb23566e44a07a2fa37a7ab03, type: 3}
       propertyPath: m_Name
       value: Building (2)
@@ -1195,6 +1199,10 @@ PrefabInstance:
       propertyPath: buildingData
       value: 
       objectReference: {fileID: 11400000, guid: 3837f6634095f994d80d3ecf9bddf3c5, type: 2}
+    - target: {fileID: 4936976373121710334, guid: cc21d86fb23566e44a07a2fa37a7ab03, type: 3}
+      propertyPath: buildingPrefab
+      value: 
+      objectReference: {fileID: 4370519625553309334, guid: 93fc194a873c76342bb0c56f6081626c, type: 3}
     - target: {fileID: 5970691108502019076, guid: cc21d86fb23566e44a07a2fa37a7ab03, type: 3}
       propertyPath: m_Name
       value: Building (1)
@@ -2173,6 +2181,10 @@ PrefabInstance:
       propertyPath: buildingData
       value: 
       objectReference: {fileID: 11400000, guid: a179c35e5770b4848ada2619722fd605, type: 2}
+    - target: {fileID: 4936976373121710334, guid: cc21d86fb23566e44a07a2fa37a7ab03, type: 3}
+      propertyPath: buildingPrefab
+      value: 
+      objectReference: {fileID: 6760010417326883996, guid: e136003c246786b47b13dd2dd38ebf71, type: 3}
     - target: {fileID: 5154037953050219863, guid: cc21d86fb23566e44a07a2fa37a7ab03, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1

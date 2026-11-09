@@ -27,6 +27,6 @@ public class BuildingButton : MonoBehaviour
     public void SelectBuilding()
     {
         inputController.SelectedBuilding = buildingData;
-        Debug.Log($"Selected: {buildingData.name}");
+        Debug.Log($"Selected: {inputController.SelectedBuilding.name}");
     }
 }

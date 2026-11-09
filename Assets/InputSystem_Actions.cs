@@ -917,39 +917,29 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             ""id"": ""0c8017cc-cb13-4f90-8f7e-918b9c968c98"",
             ""actions"": [
                 {
-                    ""name"": ""SpawnSawMill"",
-                    ""type"": ""Button"",
-                    ""id"": ""d0bc478c-7c5a-4019-93a5-9d8666fd72e6"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false,
-                    ""priority"": 0
-                },
-                {
-                    ""name"": ""SpawnWoodCutter"",
-                    ""type"": ""Button"",
-                    ""id"": ""edda01ee-0fc6-41a3-9707-18866ce1edf0"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false,
-                    ""priority"": 0
-                },
-                {
-                    ""name"": ""SpawnHut"",
-                    ""type"": ""Button"",
-                    ""id"": ""b8375423-9acf-439a-8630-118aa12bec5d"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false,
-                    ""priority"": 0
-                },
-                {
                     ""name"": ""GiveWood"",
                     ""type"": ""Button"",
                     ""id"": ""a7985839-22ba-4a91-a2c4-4572fbf198c9"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false,
+                    ""priority"": 0
+                },
+                {
+                    ""name"": ""AktivePlacement"",
+                    ""type"": ""Button"",
+                    ""id"": ""5753636a-2a0e-4868-97a2-064a4b43775a"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false,
+                    ""priority"": 0
+                },
+                {
+                    ""name"": ""CancelPlacement"",
+                    ""type"": ""Button"",
+                    ""id"": ""22923a8e-027e-4832-976d-1a4ebb82f88a"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -960,45 +950,34 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""a4519f66-6526-455f-9f6f-18ded43ec7ea"",
-                    ""path"": ""<Keyboard>/2"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""SpawnSawMill"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""593c3b5d-14c7-4d6f-9813-4fd3f88aaecd"",
-                    ""path"": ""<Keyboard>/1"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""SpawnWoodCutter"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""6ca222b5-3448-4e1c-9538-810ddbdfaedf"",
-                    ""path"": ""<Keyboard>/3"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""SpawnHut"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""9f99b618-64f7-486d-97af-b59f78ef9614"",
                     ""path"": ""<Keyboard>/h"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""GiveWood"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a4ac3268-99ac-485a-9471-365387e1b8ec"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""AktivePlacement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e4f1be47-7e98-40e5-ab9f-2a7627fa4c12"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""CancelPlacement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1333,10 +1312,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_UI_TrackedDeviceOrientation = m_UI.FindAction("TrackedDeviceOrientation", throwIfNotFound: true);
         // BuildModus
         m_BuildModus = asset.FindActionMap("BuildModus", throwIfNotFound: true);
-        m_BuildModus_SpawnSawMill = m_BuildModus.FindAction("SpawnSawMill", throwIfNotFound: true);
-        m_BuildModus_SpawnWoodCutter = m_BuildModus.FindAction("SpawnWoodCutter", throwIfNotFound: true);
-        m_BuildModus_SpawnHut = m_BuildModus.FindAction("SpawnHut", throwIfNotFound: true);
         m_BuildModus_GiveWood = m_BuildModus.FindAction("GiveWood", throwIfNotFound: true);
+        m_BuildModus_AktivePlacement = m_BuildModus.FindAction("AktivePlacement", throwIfNotFound: true);
+        m_BuildModus_CancelPlacement = m_BuildModus.FindAction("CancelPlacement", throwIfNotFound: true);
         // Camera
         m_Camera = asset.FindActionMap("Camera", throwIfNotFound: true);
         m_Camera_Move = m_Camera.FindAction("Move", throwIfNotFound: true);
@@ -1787,10 +1765,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     // BuildModus
     private readonly InputActionMap m_BuildModus;
     private List<IBuildModusActions> m_BuildModusActionsCallbackInterfaces = new List<IBuildModusActions>();
-    private readonly InputAction m_BuildModus_SpawnSawMill;
-    private readonly InputAction m_BuildModus_SpawnWoodCutter;
-    private readonly InputAction m_BuildModus_SpawnHut;
     private readonly InputAction m_BuildModus_GiveWood;
+    private readonly InputAction m_BuildModus_AktivePlacement;
+    private readonly InputAction m_BuildModus_CancelPlacement;
     /// <summary>
     /// Provides access to input actions defined in input action map "BuildModus".
     /// </summary>
@@ -1803,21 +1780,17 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// </summary>
         public BuildModusActions(@InputSystem_Actions wrapper) { m_Wrapper = wrapper; }
         /// <summary>
-        /// Provides access to the underlying input action "BuildModus/SpawnSawMill".
-        /// </summary>
-        public InputAction @SpawnSawMill => m_Wrapper.m_BuildModus_SpawnSawMill;
-        /// <summary>
-        /// Provides access to the underlying input action "BuildModus/SpawnWoodCutter".
-        /// </summary>
-        public InputAction @SpawnWoodCutter => m_Wrapper.m_BuildModus_SpawnWoodCutter;
-        /// <summary>
-        /// Provides access to the underlying input action "BuildModus/SpawnHut".
-        /// </summary>
-        public InputAction @SpawnHut => m_Wrapper.m_BuildModus_SpawnHut;
-        /// <summary>
         /// Provides access to the underlying input action "BuildModus/GiveWood".
         /// </summary>
         public InputAction @GiveWood => m_Wrapper.m_BuildModus_GiveWood;
+        /// <summary>
+        /// Provides access to the underlying input action "BuildModus/AktivePlacement".
+        /// </summary>
+        public InputAction @AktivePlacement => m_Wrapper.m_BuildModus_AktivePlacement;
+        /// <summary>
+        /// Provides access to the underlying input action "BuildModus/CancelPlacement".
+        /// </summary>
+        public InputAction @CancelPlacement => m_Wrapper.m_BuildModus_CancelPlacement;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -1844,18 +1817,15 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_BuildModusActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_BuildModusActionsCallbackInterfaces.Add(instance);
-            @SpawnSawMill.started += instance.OnSpawnSawMill;
-            @SpawnSawMill.performed += instance.OnSpawnSawMill;
-            @SpawnSawMill.canceled += instance.OnSpawnSawMill;
-            @SpawnWoodCutter.started += instance.OnSpawnWoodCutter;
-            @SpawnWoodCutter.performed += instance.OnSpawnWoodCutter;
-            @SpawnWoodCutter.canceled += instance.OnSpawnWoodCutter;
-            @SpawnHut.started += instance.OnSpawnHut;
-            @SpawnHut.performed += instance.OnSpawnHut;
-            @SpawnHut.canceled += instance.OnSpawnHut;
             @GiveWood.started += instance.OnGiveWood;
             @GiveWood.performed += instance.OnGiveWood;
             @GiveWood.canceled += instance.OnGiveWood;
+            @AktivePlacement.started += instance.OnAktivePlacement;
+            @AktivePlacement.performed += instance.OnAktivePlacement;
+            @AktivePlacement.canceled += instance.OnAktivePlacement;
+            @CancelPlacement.started += instance.OnCancelPlacement;
+            @CancelPlacement.performed += instance.OnCancelPlacement;
+            @CancelPlacement.canceled += instance.OnCancelPlacement;
         }
 
         /// <summary>
@@ -1867,18 +1837,15 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="BuildModusActions" />
         private void UnregisterCallbacks(IBuildModusActions instance)
         {
-            @SpawnSawMill.started -= instance.OnSpawnSawMill;
-            @SpawnSawMill.performed -= instance.OnSpawnSawMill;
-            @SpawnSawMill.canceled -= instance.OnSpawnSawMill;
-            @SpawnWoodCutter.started -= instance.OnSpawnWoodCutter;
-            @SpawnWoodCutter.performed -= instance.OnSpawnWoodCutter;
-            @SpawnWoodCutter.canceled -= instance.OnSpawnWoodCutter;
-            @SpawnHut.started -= instance.OnSpawnHut;
-            @SpawnHut.performed -= instance.OnSpawnHut;
-            @SpawnHut.canceled -= instance.OnSpawnHut;
             @GiveWood.started -= instance.OnGiveWood;
             @GiveWood.performed -= instance.OnGiveWood;
             @GiveWood.canceled -= instance.OnGiveWood;
+            @AktivePlacement.started -= instance.OnAktivePlacement;
+            @AktivePlacement.performed -= instance.OnAktivePlacement;
+            @AktivePlacement.canceled -= instance.OnAktivePlacement;
+            @CancelPlacement.started -= instance.OnCancelPlacement;
+            @CancelPlacement.performed -= instance.OnCancelPlacement;
+            @CancelPlacement.canceled -= instance.OnCancelPlacement;
         }
 
         /// <summary>
@@ -2345,33 +2312,26 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     public interface IBuildModusActions
     {
         /// <summary>
-        /// Method invoked when associated input action "SpawnSawMill" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnSpawnSawMill(InputAction.CallbackContext context);
-        /// <summary>
-        /// Method invoked when associated input action "SpawnWoodCutter" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnSpawnWoodCutter(InputAction.CallbackContext context);
-        /// <summary>
-        /// Method invoked when associated input action "SpawnHut" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnSpawnHut(InputAction.CallbackContext context);
-        /// <summary>
         /// Method invoked when associated input action "GiveWood" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnGiveWood(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "AktivePlacement" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAktivePlacement(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "CancelPlacement" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnCancelPlacement(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Camera" which allows adding and removing callbacks.

@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 
 public class InputController : MonoBehaviour
 {
@@ -16,8 +17,6 @@ public class InputController : MonoBehaviour
 
     [SerializeField]
     int debugRessource = 0;
-
-
     BuildingData selectedBuilding;
     public BuildingData SelectedBuilding { get => selectedBuilding; set => selectedBuilding = value; }
     //getter for later (idk if needed for a "shader" that shows can buildd or not)
@@ -50,10 +49,10 @@ public class InputController : MonoBehaviour
 
         inputActions = new InputSystem_Actions();
 
-        inputActions.BuildModus.SpawnWoodCutter.performed += ctx => SpawnWoodCutter();
-        inputActions.BuildModus.SpawnSawMill.performed += ctx => SpawnSawMill();
-        inputActions.BuildModus.SpawnHut.performed += ctx => SpawnHut();
         inputActions.BuildModus.GiveWood.performed += ctx => GiveWood();
+
+        inputActions.BuildModus.AktivePlacement.performed += ctx => SpawnSelectedBuilding();
+        inputActions.BuildModus.CancelPlacement.performed += ctx => CancelPlacement();
 
         inputActions.Core.ChangeTickSpeed.performed += ctx => ChangeTickSpeed((int)ctx.ReadValue<float>());
         inputActions.Core.Pause.performed += ctx => PauseGame();
@@ -93,28 +92,28 @@ public class InputController : MonoBehaviour
         inputActions.Disable();
     }
 
-    void SpawnWoodCutter()
+    void SpawnSelectedBuilding()
     {
-        if (TryGetMouseWorldPosition(out Vector3 position))
+        if(selectedBuilding == null)
         {
-            buildingManager.SpawnTestWoodCutter(position);
+            return;
+        }
+        
+        if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
+        {
+            Debug.Log("Mouse is over UI, not spawning building.");
+            return;
+        }
+
+        if(TryGetMouseWorldPosition(out Vector3 pos))
+        {
+            buildingManager.BuildBuilding(selectedBuilding, pos);
         }
     }
 
-    void SpawnSawMill()
+    void CancelPlacement()
     {
-        if (TryGetMouseWorldPosition(out Vector3 position))
-        {
-            buildingManager.SpawnTestSawMill(position);
-        }
-    }
-
-    void SpawnHut()
-    {
-        if (TryGetMouseWorldPosition(out Vector3 position))
-        {
-            buildingManager.SpawnTestHut(position);
-        }
+        selectedBuilding = null;
     }
 
     void GiveWood()

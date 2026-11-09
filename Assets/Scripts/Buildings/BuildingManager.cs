@@ -74,7 +74,7 @@ public class BuildingManager : MonoBehaviour
         }
     }
 
-    void SpawnBuilding(GameObject buildingPrefab, Vector3 position)
+    public void SpawnBuilding(GameObject buildingPrefab, Vector3 position)
     {
         Instantiate(buildingPrefab, position, Quaternion.identity, buildingContainer);
     }
