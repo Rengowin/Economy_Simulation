@@ -12,32 +12,6 @@ public class BuildingManager : MonoBehaviour
     [SerializeField]
     Transform buildingContainer;
 
-
-    [Header("Building Data kommt weg sobald mehr gebäude/ui stuff kommt")]
-    [SerializeField]
-    BuildingData woodCutterData;
-    [SerializeField]
-    BuildingData sawMillData;
-
-    [SerializeField]
-    BuildingData hutData;
-
-
-    public void SpawnTestSawMill(Vector3 pos)
-    {
-        BuildBuilding(sawMillData, pos);
-    }
-
-    public void SpawnTestWoodCutter(Vector3 pos)
-    {
-        BuildBuilding(woodCutterData, pos);
-    }
-
-    public void SpawnTestHut(Vector3 pos)
-    {
-        BuildBuilding(hutData, pos);
-    }
-
     private void Awake()
     {
         if (Instance == null)
@@ -60,6 +34,11 @@ public class BuildingManager : MonoBehaviour
 
     public void BuildBuilding(BuildingData buildingData, Vector3 position)
     {
+        if(!BuildingPlacementValidator.CanPlaceBuilding(buildingData, position))
+        {
+            Debug.Log("Cannot place building at this position!");
+            return;
+        }
         if (canBuild(buildingData.BuildCosts))
         {
             SpawnBuilding(buildingData.BuildingPrefab, position);
@@ -67,10 +46,6 @@ public class BuildingManager : MonoBehaviour
             {
                 storageManager.GlobalStorage.Remove(resource.Ressource, resource.Amount);
             }
-        }
-        else
-        {
-            Debug.Log("Not enough resources to build!");
         }
     }
 
@@ -85,6 +60,7 @@ public class BuildingManager : MonoBehaviour
         {
             if (storageManager.GlobalStorage.GetAmount(resource.Ressource) < resource.Amount)
             {
+                Debug.Log("not enough resources to build " + resource.Ressource.name);
                 return false;
             }
         }

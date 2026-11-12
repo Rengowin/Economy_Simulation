@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5440628233927517703}
   - component: {fileID: 8186860019880504081}
   - component: {fileID: 2480310010074565444}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Hut
   m_TagString: Untagged
   m_Icon: {fileID: 0}

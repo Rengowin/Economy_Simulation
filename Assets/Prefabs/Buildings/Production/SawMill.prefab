@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4206446659460132072}
   - component: {fileID: 3664041671140192789}
   - component: {fileID: 1312223576147198561}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SawMill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -126,8 +126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ProductionBuilding
   recipe: {fileID: 11400000, guid: 9427453a9dbc0f14f999a2615effad44, type: 2}
-  buildCost: {fileID: 11400000, guid: ed75208516a794e428a881982bd4a498, type: 2}
-  timeNeedToProduce: 0
+  productionDuration: 0
   currentProductionTime: 0
   globalStorage: {fileID: 0}
   tickController: {fileID: 0}

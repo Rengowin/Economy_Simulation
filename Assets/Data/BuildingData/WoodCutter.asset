@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: WoodCutter
   m_EditorClassIdentifier: Assembly-CSharp::BuildingData
   buildingPrefab: {fileID: 6760010417326883996, guid: e136003c246786b47b13dd2dd38ebf71, type: 3}
-  buildCost: {fileID: 11400000, guid: ed75208516a794e428a881982bd4a498, type: 2}
+  buildCosts: []
+  footprint: {x: 1, y: 1}

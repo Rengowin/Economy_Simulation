@@ -1354,9 +1354,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BuildingManager
   storageManager: {fileID: 644882177}
   buildingContainer: {fileID: 33923209}
-  woodCutterData: {fileID: 11400000, guid: a179c35e5770b4848ada2619722fd605, type: 2}
-  sawMillData: {fileID: 11400000, guid: 3837f6634095f994d80d3ecf9bddf3c5, type: 2}
-  hutData: {fileID: 11400000, guid: 3b57f72a7e791564badaa74fc51a04cd, type: 2}
 --- !u!4 &856979170
 Transform:
   m_ObjectHideFlags: 0

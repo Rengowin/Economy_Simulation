@@ -8,6 +8,11 @@ public class BuildingData : ScriptableObject
     GameObject buildingPrefab;
     [SerializeField]
     List<ResourceAmount> buildCosts;
+
+    [SerializeField, Min(1)]
+    Vector2Int footprint;
+
     public GameObject BuildingPrefab => buildingPrefab;
     public List<ResourceAmount> BuildCosts => buildCosts;
+    public Vector2Int FootPrint => footprint;
 }

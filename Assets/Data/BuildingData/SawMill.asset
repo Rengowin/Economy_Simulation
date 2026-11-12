@@ -16,3 +16,4 @@ MonoBehaviour:
   buildCosts:
   - ressource: {fileID: 11400000, guid: dc8da558cef278246b698411dfd026c3, type: 2}
     amount: 5
+  footprint: {x: 1, y: 1}

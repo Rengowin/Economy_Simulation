@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1390955486796782132}
   - component: {fileID: 5932474528961128766}
   - component: {fileID: 8620296647955968091}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WoodCotter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -126,8 +126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ProductionBuilding
   recipe: {fileID: 11400000, guid: ec8fedf9bb0114443b25693a83fc70ad, type: 2}
-  buildCost: {fileID: 11400000, guid: ed75208516a794e428a881982bd4a498, type: 2}
-  timeNeedToProduce: 0
+  productionDuration: 0
   currentProductionTime: 0
   globalStorage: {fileID: 0}
   tickController: {fileID: 0}
