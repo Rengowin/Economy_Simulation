@@ -16,7 +16,10 @@ public class InputController : MonoBehaviour
     GameController gameController;
 
     [SerializeField]
-    int debugRessource = 0;
+    ResourceType debugRessource;
+    [SerializeField]
+    int debugRessourceAmount = 0;
+
     BuildingData selectedBuilding;
     public BuildingData SelectedBuilding { get => selectedBuilding; set => selectedBuilding = value; }
     //getter for later (idk if needed for a "shader" that shows can buildd or not)
@@ -118,33 +121,11 @@ public class InputController : MonoBehaviour
 
     void GiveWood()
     {
-        //StorageManager.Instance.GlobalStorage.Add(ResourceType.Wood, debugRessource);
+        StorageManager.Instance.GlobalStorage.Add(debugRessource, debugRessourceAmount);
     }
 
-
-    //Vector3 GetMouseWorldPosition()
-    //{
-    //    Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
-    //    Vector2 mousePosition = Mouse.current.position.ReadValue();
-    //    Ray ray = Camera.main.ScreenPointToRay(mousePosition);
-
-    //    //if (groundPlane.Raycast(ray, out RaycastHit hit))
-    //    //{
-    //    //    return hit.point;
-    //    //}
-
-    //    if (groundPlane.Raycast(ray, out float enter))
-    //    {
-    //        return ray.GetPoint(enter);
-    //    }
-    //    else
-    //    {
-    //        Debug.LogError("Mouse ray did not hit the ground plane.");
-    //        return Vector3.zero;
-    //    }
-    //}
-
-    bool TryGetMouseWorldPosition(out Vector3 position)
+    //for now public, will be later sourced out? (since the validation needs also position or i find an other way)
+    public bool TryGetMouseWorldPosition(out Vector3 position)
     {
         Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
         Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());

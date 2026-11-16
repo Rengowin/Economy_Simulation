@@ -1467,7 +1467,8 @@ MonoBehaviour:
   buildingManager: {fileID: 856979169}
   cameraController: {fileID: 330585548}
   gameController: {fileID: 272359768}
-  debugRessource: 110
+  debugRessource: {fileID: 11400000, guid: dc8da558cef278246b698411dfd026c3, type: 2}
+  debugRessourceAmount: 10
 --- !u!4 &1024251657
 Transform:
   m_ObjectHideFlags: 0
